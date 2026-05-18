@@ -1650,7 +1650,7 @@ footer {
 /* Visitors */
 .visitor-counter {
     position: fixed;
-    bottom: 20px;
+    bottom: 6px;
     left: 20px;
     background: white;
     color: #111;
