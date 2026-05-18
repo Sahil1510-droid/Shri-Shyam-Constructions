@@ -74,3 +74,30 @@ document.addEventListener('mousemove', e => {
     const y = (e.clientY / window.innerHeight - 0.5) * 12;
     document.querySelector('.hero-glow').style.transform = `translate(${x}px, ${y}px)`;
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+            const counterElement = document.getElementById("visitorCount");
+
+            fetch("https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions/up", {
+                method: "GET"
+            })
+                .then(response => response.json())
+                .then(result => {
+
+                    console.log(result); // Debugging
+
+                    if (result.code === "200" && result.data && result.data.up_count !== undefined) {
+                        counterElement.innerText = result.data.up_count;
+                    } else {
+                        counterElement.innerText = "0";
+                    }
+
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    counterElement.innerText = "0";
+                });
+
+        });
