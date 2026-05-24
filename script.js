@@ -78,26 +78,26 @@ document.addEventListener('mousemove', e => {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-            const counterElement = document.getElementById("visitorCount");
+    const counterElement = document.getElementById("visitorCount");
 
-            fetch("https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions/up", {
-                method: "GET"
-            })
-                .then(response => response.json())
-                .then(result => {
+    fetch("https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions/up", {
+        method: "GET"
+    })
+        .then(response => response.json())
+        .then(result => {
 
-                    console.log(result); // Debugging
+            console.log(result); // Debugging
 
-                    if (result.code === "200" && result.data && result.data.up_count !== undefined) {
-                        counterElement.innerText = result.data.up_count;
-                    } else {
-                        counterElement.innerText = "0";
-                    }
+            if (result.code === "200" && result.data && result.data.up_count !== undefined) {
+                counterElement.innerText = result.data.up_count;
+            } else {
+                counterElement.innerText = "0";
+            }
 
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    counterElement.innerText = "0";
-                });
-
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            counterElement.innerText = "0";
         });
+
+});
