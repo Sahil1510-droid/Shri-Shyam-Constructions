@@ -57,15 +57,112 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
 // ── Form Submit ──
-function handleSubmit(btn) {
-    const span = btn.querySelector('span');
+/* ══════════════════════════════════════════════
+   EMAILJS CONFIG — paste your own keys here
+══════════════════════════════════════════════ */
+const EJS = {
+    publicKey: 'KxJV2DE1l1P-2dxRk',    // from EmailJS → Account → General
+    serviceId: 'service_gb0il0d',    // from EmailJS → Email Services
+    templateId: 'template_hcqb64u',  // from EmailJS → Email Templates
+};
+
+/* ── Init EmailJS ── */
+(function () {
+    if (typeof emailjs === 'undefined') {
+        console.warn('EmailJS not loaded. Add the CDN script to <head>.');
+        return;
+    }
+    emailjs.init({ publicKey: EJS.publicKey });
+})();
+
+/* ══════════════════════════════════════════════
+   FORM SUBMISSION
+══════════════════════════════════════════════ */
+document.getElementById('cf-submit')?.addEventListener('click', function () {
+    sendEnquiry();
+});
+
+function sendEnquiry() {
+    /* ── Gather values ── */
+    const fname = document.getElementById('cf-fname').value.trim();
+    const lname = document.getElementById('cf-lname').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const phone = document.getElementById('cf-phone').value.trim();
+    const service = document.getElementById('cf-service').value;
+    const message = document.getElementById('cf-message').value.trim();
+
+    const errBox = document.getElementById('cf-error');
+    const sucBox = document.getElementById('cf-success');
+    const btn = document.getElementById('cf-submit');
+    const btnSpan = btn.querySelector('span');
+
+    /* ── Hide previous messages ── */
+    errBox.style.display = 'none';
+    sucBox.style.display = 'none';
+
+    /* ── Validation ── */
+    const errors = [];
+    if (!fname) errors.push('First name is required.');
+    if (!email) errors.push('Email address is required.');
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        errors.push('Please enter a valid email address.');
+    if (!phone) errors.push('Phone number is required.');
+    else if (!/^[\d\s\+\-\(\)]{8,}$/.test(phone))
+        errors.push('Please enter a valid phone number.');
+    if (!service) errors.push('Please select a project type.');
+    if (!message) errors.push('Please tell us about your project.');
+
+    if (errors.length) {
+        errBox.innerHTML = errors.join('<br>');
+        errBox.style.display = 'block';
+        errBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+    }
+
+    /* ── Loading state ── */
     btn.disabled = true;
-    span.textContent = 'Sending...';
-    setTimeout(() => {
-        span.textContent = '✓ Enquiry Sent!';
-        btn.style.background = '#2d6a4f';
-        setTimeout(() => { span.textContent = 'Send Enquiry →'; btn.disabled = false; btn.style.background = ''; }, 3000);
-    }, 1800);
+    btnSpan.textContent = 'Sending...';
+    btn.style.opacity = '0.7';
+
+    /* ── Send via EmailJS ── */
+    const templateParams = {
+        from_name: fname + ' ' + lname,
+        from_email: email,
+        phone: phone,
+        project_type: service,
+        message: message,
+        reply_to: email,          // lets you reply directly in Gmail
+    };
+
+    emailjs.send(EJS.serviceId, EJS.templateId, templateParams)
+        .then(function (response) {
+            console.log('EmailJS success:', response.status, response.text);
+
+            /* ── Show success ── */
+            sucBox.style.display = 'block';
+            sucBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            /* ── Reset form ── */
+            ['cf-fname', 'cf-lname', 'cf-email', 'cf-phone', 'cf-message'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+            document.getElementById('cf-service').value = '';
+
+            /* ── Reset button ── */
+            btn.disabled = false;
+            btnSpan.textContent = 'Send Enquiry →';
+            btn.style.opacity = '1';
+        })
+        .catch(function (error) {
+            console.error('EmailJS error:', error);
+
+            errBox.innerHTML = '⚠ Something went wrong. Please try again or call us directly at <strong>+91 89689 67835</strong>.';
+            errBox.style.display = 'block';
+
+            btn.disabled = false;
+            btnSpan.textContent = 'Send Enquiry →';
+            btn.style.opacity = '1';
+        });
 }
 
 // ── Parallax Hero Grid ──
