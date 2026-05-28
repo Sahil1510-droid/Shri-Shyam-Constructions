@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms & Conditions — Bansal Constructions</title>
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --black: #0d0d0d;
+            --charcoal: #1a1a1a;
+            --steel: #2c2c2c;
+            --iron: #3d3d3d;
+            --concrete: #888888;
+            --silver: #c0c0c0;
+            --white: #f5f0ea;
+            --amber: #f5a623;
+            --amber-dim: #b87b18;
+            --rust: #c0392b;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Barlow', sans-serif;
+            font-weight: 300;
+            line-height: 1.75;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        /* ── NOISE TEXTURE OVERLAY ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── HAZARD STRIPE HEADER ── */
+        .hazard-bar {
+            background: repeating-linear-gradient(-55deg,
+                    var(--amber) 0px,
+                    var(--amber) 18px,
+                    var(--black) 18px,
+                    var(--black) 36px);
+            height: 8px;
+            width: 100%;
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: var(--charcoal);
+            border-bottom: 1px solid var(--iron);
+            padding: 0 clamp(1.25rem, 5vw, 4rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            letter-spacing: 0.12em;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo span {
+            color: var(--amber);
+        }
+
+        .nav-badge {
+            background: var(--iron);
+            border: 1px solid var(--amber);
+            color: var(--amber);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            padding: 3px 10px;
+            text-transform: uppercase;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 4rem) clamp(2rem, 6vw, 4rem);
+            border-bottom: 1px solid var(--iron);
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: 'TERMS';
+            position: absolute;
+            right: -0.02em;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(6rem, 20vw, 16rem);
+            color: var(--charcoal);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            color: var(--amber);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 2px;
+            background: var(--amber);
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.8rem, 10vw, 6.5rem);
+            line-height: 0.95;
+            letter-spacing: 0.04em;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+            max-width: 14ch;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--amber);
+            -webkit-text-stroke: 0;
+        }
+
+        .hero-meta {
+            margin-top: 1.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--concrete);
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-meta span::before {
+            content: '▮';
+            color: var(--amber);
+            font-size: 0.5rem;
+        }
+
+        /* ── LAYOUT ── */
+        .page-wrap {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 900px) {
+            .page-wrap {
+                grid-template-columns: 260px 1fr;
+                align-items: start;
+            }
+        }
+
+        /* ── SIDEBAR / TABLE OF CONTENTS ── */
+        .toc {
+            padding: 2.5rem clamp(1.25rem, 4vw, 2.5rem);
+            border-bottom: 1px solid var(--iron);
+            position: relative;
+        }
+
+        @media (min-width: 900px) {
+            .toc {
+                position: sticky;
+                top: 64px;
+                border-bottom: none;
+                border-right: 1px solid var(--iron);
+                min-height: calc(100vh - 64px);
+                padding: 2.5rem 2rem;
+            }
+        }
+
+        .toc-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            color: var(--amber);
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--iron);
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem 0.75rem;
+        }
+
+        @media (min-width: 900px) {
+            .toc-list {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        .toc-list li a {
+            display: block;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--concrete);
+            text-decoration: none;
+            padding: 0.4rem 0;
+            border-left: 2px solid transparent;
+            padding-left: 0.75rem;
+            transition: color 0.2s, border-color 0.2s;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 899px) {
+            .toc-list li a {
+                border-left: none;
+                padding-left: 0;
+                border-bottom: 1px solid transparent;
+                font-size: 0.78rem;
+                background: var(--charcoal);
+                padding: 4px 10px;
+            }
+        }
+
+        .toc-list li a:hover {
+            color: var(--amber);
+            border-color: var(--amber);
+        }
+
+        .toc-number {
+            color: var(--iron);
+            font-size: 0.7em;
+            margin-right: 4px;
+        }
+
+        /* ── MAIN CONTENT ── */
+        .content {
+            padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 3.5rem);
+        }
+
+        /* ── SECTION ── */
+        .term-section {
+            margin-bottom: 3.5rem;
+            padding-bottom: 3.5rem;
+            border-bottom: 1px solid var(--iron);
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .term-section:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--iron);
+            line-height: 1;
+            min-width: 2.5rem;
+            user-select: none;
+        }
+
+        .section-title-wrap h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--white);
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .section-title-wrap .tag {
+            display: inline-block;
+            margin-top: 4px;
+            background: var(--steel);
+            color: var(--concrete);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 2px 8px;
+        }
+
+        .term-section p {
+            color: var(--silver);
+            font-size: clamp(0.88rem, 2.2vw, 0.97rem);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .term-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── CALLOUT BOXES ── */
+        .callout {
+            border-left: 3px solid var(--amber);
+            background: rgba(245, 166, 35, 0.06);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            font-size: clamp(0.85rem, 2vw, 0.92rem);
+            color: var(--silver);
+            line-height: 1.7;
+        }
+
+        .callout.danger {
+            border-color: var(--rust);
+            background: rgba(192, 57, 43, 0.07);
+        }
+
+        .callout strong {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--amber);
+        }
+
+        .callout.danger strong {
+            color: #e74c3c;
+        }
+
+        /* ── LIST ── */
+        .term-list {
+            list-style: none;
+            margin: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .term-list li {
+            display: flex;
+            gap: 0.75rem;
+            color: var(--silver);
+            font-size: clamp(0.86rem, 2vw, 0.94rem);
+            line-height: 1.65;
+        }
+
+        .term-list li::before {
+            content: '—';
+            color: var(--amber);
+            flex-shrink: 0;
+            margin-top: 0.05em;
+        }
+
+        /* ── CONTACT CARD ── */
+        .contact-card {
+            background: var(--charcoal);
+            border: 1px solid var(--iron);
+            padding: 1.75rem;
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 600px) {
+            .contact-card {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .contact-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--amber);
+        }
+
+        .contact-value {
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+
+        .contact-value a {
+            color: var(--white);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: var(--iron);
+            transition: text-decoration-color 0.2s;
+        }
+
+        .contact-value a:hover {
+            text-decoration-color: var(--amber);
+        }
+
+        /* ── ACCEPTANCE BANNER ── */
+        .acceptance {
+            background: var(--charcoal);
+            border: 1px solid var(--amber);
+            padding: 1.5rem clamp(1.25rem, 4vw, 2rem);
+            margin: 0 clamp(1.25rem, 5vw, 3.5rem) 3rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .acceptance-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            line-height: 1;
+            margin-top: 2px;
+        }
+
+        .acceptance-text {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .acceptance-text strong {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--amber);
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+
+        .acceptance-text p {
+            font-size: 0.87rem;
+            color: var(--silver);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--charcoal);
+            border-top: 1px solid var(--iron);
+            padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.25rem, 5vw, 4rem);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .footer-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.12em;
+            color: var(--white);
+        }
+
+        .footer-brand span {
+            color: var(--amber);
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: var(--concrete);
+            text-align: right;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--concrete);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--amber);
+        }
+
+        /* ── SCROLL-TO-TOP ── */
+        .scroll-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: var(--amber);
+            color: var(--black);
+            border: none;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .scroll-top:hover {
+            background: var(--amber-dim);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hazard-bar"></div>
+
+    <nav>
+        <a href="index.html" class="nav-logo">Bansal<span>Constructions</span></a>
+        <div class="nav-badge">Legal Document</div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-eyebrow">Bansal Constructions</div>
+        <h1>Terms &amp; <em>Conditions</em></h1>
+        <div class="hero-meta">
+            <span>Effective: January 1, 2025</span>
+            <span>Last Updated: May 2025</span>
+            <span>Version 3.2</span>
+        </div>
+    </header>
+
+    <!-- ACCEPTANCE NOTICE -->
+    <div class="acceptance">
+        <div class="acceptance-icon">⚠</div>
+        <div class="acceptance-text">
+            <strong>Important Notice</strong>
+            <p>By engaging our services, visiting our website, or signing any contract with Bansal Constructions, you
+                confirm that you have read, understood, and agree to be bound by these Terms &amp; Conditions in their
+                entirety.</p>
+        </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="page-wrap">
+
+        <!-- SIDEBAR TOC -->
+        <aside class="toc">
+            <div class="toc-title">Contents</div>
+            <ul class="toc-list">
+                <li><a href="#s1"><span class="toc-number">01</span> Definitions</a></li>
+                <li><a href="#s2"><span class="toc-number">02</span> Scope of Services</a></li>
+                <li><a href="#s3"><span class="toc-number">03</span> Quotations &amp; Estimates</a></li>
+                <li><a href="#s4"><span class="toc-number">04</span> Payment Terms</a></li>
+                <li><a href="#s5"><span class="toc-number">05</span> Project Timeline</a></li>
+                <li><a href="#s6"><span class="toc-number">06</span> Client Responsibilities</a></li>
+                <li><a href="#s7"><span class="toc-number">07</span> Safety &amp; Compliance</a></li>
+                <li><a href="#s8"><span class="toc-number">08</span> Liability</a></li>
+                <li><a href="#s9"><span class="toc-number">09</span> Warranty</a></li>
+                <li><a href="#s10"><span class="toc-number">10</span> Termination</a></li>
+                <li><a href="#s11"><span class="toc-number">11</span> Disputes</a></li>
+                <li><a href="#s12"><span class="toc-number">12</span> Governing Law</a></li>
+                <li><a href="#s13"><span class="toc-number">13</span> Privacy</a></li>
+                <li><a href="#s14"><span class="toc-number">14</span> Contact</a></li>
+            </ul>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="content">
+
+            <!-- 01 -->
+            <section class="term-section" id="s1">
+                <div class="section-header">
+                    <div class="section-num">01</div>
+                    <div class="section-title-wrap">
+                        <h2>Definitions</h2>
+                        <span class="tag">Terminology</span>
+                    </div>
+                </div>
+                <p>Throughout these Terms &amp; Conditions, the following definitions shall apply:</p>
+                <ul class="term-list">
+                    <li><strong>"Company"</strong> refers to Bansal Constructions, its employees, subcontractors,
+                        agents, and authorized representatives.</li>
+                    <li><strong>"Client"</strong> refers to any individual, business, or entity that engages the Company
+                        for construction or related services.</li>
+                    <li><strong>"Project"</strong> means the specific construction, renovation, or service work agreed
+                        upon in writing.</li>
+                    <li><strong>"Contract"</strong> means the written agreement, proposal, or work order executed
+                        between the Company and the Client.</li>
+                    <li><strong>"Site"</strong> refers to the physical property where work is to be performed.</li>
+                    <li><strong>"Variation"</strong> means any change to the agreed scope of work requested by either
+                        party after project commencement.</li>
+                </ul>
+            </section>
+
+            <!-- 02 -->
+            <section class="term-section" id="s2">
+                <div class="section-header">
+                    <div class="section-num">02</div>
+                    <div class="section-title-wrap">
+                        <h2>Scope of Services</h2>
+                        <span class="tag">Service Agreement</span>
+                    </div>
+                </div>
+                <p>The Company agrees to provide construction, renovation, and related services as explicitly outlined
+                    in the signed Contract. All work will be performed in accordance with accepted industry standards
+                    and applicable local building codes.</p>
+                <p>Any work not explicitly listed in the Contract is considered outside the project scope and will be
+                    subject to a separate quotation and written approval. The Company reserves the right to decline
+                    additional work requests that materially alter the project timeline or resource allocation.</p>
+                <div class="callout">
+                    <strong>Important</strong>
+                    All scope changes must be documented in writing via a signed Variation Order before any additional
+                    work commences. Verbal instructions alone do not constitute authorization.
+                </div>
+            </section>
+
+            <!-- 03 -->
+            <section class="term-section" id="s3">
+                <div class="section-header">
+                    <div class="section-num">03</div>
+                    <div class="section-title-wrap">
+                        <h2>Quotations &amp; Estimates</h2>
+                        <span class="tag">Pricing</span>
+                    </div>
+                </div>
+                <p>All quotations provided by the Company are valid for 30 days from the date of issue unless otherwise
+                    stated in writing. Quotations are based on information available at the time of preparation and may
+                    be subject to revision if site conditions, material costs, or project specifications change.</p>
+                <p>Estimates are provided in good faith based on available information and are not binding. Final
+                    project costs may vary due to unforeseen site conditions, material price fluctuations, design
+                    changes, or regulatory requirements discovered during construction.</p>
+                <ul class="term-list">
+                    <li>GST/VAT and applicable taxes are not included unless explicitly stated.</li>
+                    <li>Allowances for materials are based on standard pricing; premium selections may incur additional
+                        costs.</li>
+                    <li>Provisional sums are estimates only and will be adjusted based on actual expenditure.</li>
+                </ul>
+            </section>
+
+            <!-- 04 -->
+            <section class="term-section" id="s4">
+                <div class="section-header">
+                    <div class="section-num">04</div>
+                    <div class="section-title-wrap">
+                        <h2>Payment Terms</h2>
+                        <span class="tag">Financial</span>
+                    </div>
+                </div>
+                <p>Payment schedules are outlined in the Contract and are linked to project milestones or progress
+                    claims as agreed. Invoices are issued upon milestone completion and are payable within 14 calendar
+                    days of the invoice date.</p>
+                <div class="callout danger">
+                    <strong>Late Payment</strong>
+                    Accounts overdue by more than 14 days will incur a late payment fee of 1.5% per month on the
+                    outstanding balance. The Company reserves the right to suspend work without liability if payments
+                    are not made in accordance with agreed terms.
+                </div>
+                <ul class="term-list">
+                    <li>A deposit of up to 10% of the total project value may be required before work commences.</li>
+                    <li>Retention amounts, where applicable, will be specified in the Contract.</li>
+                    <li>Final payment is due within 7 days of practical completion.</li>
+                    <li>The Client may not withhold payment due to incomplete variations or disputed items unless agreed
+                        in writing.</li>
+                </ul>
+            </section>
+
+            <!-- 05 -->
+            <section class="term-section" id="s5">
+                <div class="section-header">
+                    <div class="section-num">05</div>
+                    <div class="section-title-wrap">
+                        <h2>Project Timeline</h2>
+                        <span class="tag">Scheduling</span>
+                    </div>
+                </div>
+                <p>Project timelines and completion dates provided by the Company are estimates made in good faith.
+                    While the Company endeavors to meet all agreed dates, delays may arise due to factors beyond the
+                    Company's reasonable control.</p>
+                <p>Events including but not limited to adverse weather conditions, delayed delivery of materials, supply
+                    chain disruptions, regulatory approvals, industrial disputes, or acts of God constitute force
+                    majeure events. The Company will not be held liable for delays caused by such events, and the
+                    project timeline will be extended accordingly.</p>
+                <div class="callout">
+                    <strong>Client-Caused Delays</strong>
+                    Delays caused by late client decisions, failure to provide site access, or incomplete approvals may
+                    result in additional costs and timeline extensions, which will be documented via a Variation Order.
+                </div>
+            </section>
+
+            <!-- 06 -->
+            <section class="term-section" id="s6">
+                <div class="section-header">
+                    <div class="section-num">06</div>
+                    <div class="section-title-wrap">
+                        <h2>Client Responsibilities</h2>
+                        <span class="tag">Obligations</span>
+                    </div>
+                </div>
+                <p>The Client agrees to fulfill the following obligations to enable the successful delivery of the
+                    project:</p>
+                <ul class="term-list">
+                    <li>Provide unrestricted site access during agreed working hours (typically Monday–Friday, 7:00 AM –
+                        5:00 PM).</li>
+                    <li>Ensure all necessary permits and approvals are obtained prior to project commencement unless
+                        otherwise agreed.</li>
+                    <li>Notify the Company promptly of any known hazards, underground services, or site-specific
+                        conditions.</li>
+                    <li>Make timely decisions and provide approvals when requested to avoid project delays.</li>
+                    <li>Ensure adequate water and electrical supply is available at the site where required.</li>
+                    <li>Remove or arrange removal of any personal property that may obstruct construction work.</li>
+                    <li>Notify neighbors of upcoming work where required by local ordinance.</li>
+                </ul>
+            </section>
+
+            <!-- 07 -->
+            <section class="term-section" id="s7">
+                <div class="section-header">
+                    <div class="section-num">07</div>
+                    <div class="section-title-wrap">
+                        <h2>Safety &amp; Compliance</h2>
+                        <span class="tag">WH&amp;S / Regulations</span>
+                    </div>
+                </div>
+                <p>The Company is committed to maintaining the highest standards of workplace health and safety. All
+                    personnel will operate in accordance with applicable occupational health and safety legislation,
+                    regulations, and site-specific safety plans.</p>
+                <p>The Client must ensure that all other parties on site comply with the Company's safety requirements.
+                    Unauthorized persons, including Client representatives, are not permitted in active work zones
+                    without prior arrangement and appropriate personal protective equipment (PPE).</p>
+                <div class="callout danger">
+                    <strong>Safety Authority</strong>
+                    The Company's site supervisor has the authority to stop work and remove any individual from the site
+                    if they pose a safety risk — including the Client or their representatives. Work will only resume
+                    when the safety concern is resolved.
+                </div>
+                <p>All work will comply with relevant building codes, environmental regulations, and local council
+                    requirements. Where regulatory inspections are required, the Company will coordinate with the
+                    appropriate authorities.</p>
+            </section>
+
+            <!-- 08 -->
+            <section class="term-section" id="s8">
+                <div class="section-header">
+                    <div class="section-num">08</div>
+                    <div class="section-title-wrap">
+                        <h2>Limitation of Liability</h2>
+                        <span class="tag">Legal Protection</span>
+                    </div>
+                </div>
+                <p>To the maximum extent permitted by applicable law, the Company's total liability to the Client for
+                    any claim arising out of or in connection with the Contract shall not exceed the total fees paid by
+                    the Client to the Company in the three months preceding the claim.</p>
+                <p>The Company shall not be liable for any indirect, consequential, incidental, or special damages
+                    including but not limited to loss of profit, loss of use, business interruption, or loss of data,
+                    whether arising in contract, tort, or otherwise.</p>
+                <ul class="term-list">
+                    <li>The Company is not liable for pre-existing defects, hidden conditions, or structural issues not
+                        visible at the time of quotation.</li>
+                    <li>Liability for damage caused by third-party subcontractors will be limited to insurance recovery
+                        from the relevant subcontractor.</li>
+                    <li>The Company carries public liability insurance; certificates are available upon written request.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 09 -->
+            <section class="term-section" id="s9">
+                <div class="section-header">
+                    <div class="section-num">09</div>
+                    <div class="section-title-wrap">
+                        <h2>Workmanship Warranty</h2>
+                        <span class="tag">Guarantees</span>
+                    </div>
+                </div>
+                <p>The Company warrants that all work will be performed in a professional and workmanlike manner, free
+                    from material defects in workmanship, for a period of 12 months from the date of practical
+                    completion ("Defects Liability Period").</p>
+                <p>Manufacturer warranties apply to materials and products supplied and are subject to the terms issued
+                    by the respective manufacturers. The Company will assist in processing valid warranty claims.</p>
+                <div class="callout">
+                    <strong>Warranty Exclusions</strong>
+                    The warranty does not cover defects arising from Client misuse, modification by others, normal wear
+                    and tear, extreme weather events, or failure to perform recommended maintenance.
+                </div>
+                <p>Warranty claims must be submitted in writing within the Defects Liability Period. Upon valid
+                    notification, the Company will inspect and, where covered, rectify defects at no additional cost to
+                    the Client.</p>
+            </section>
+
+            <!-- 10 -->
+            <section class="term-section" id="s10">
+                <div class="section-header">
+                    <div class="section-num">10</div>
+                    <div class="section-title-wrap">
+                        <h2>Termination</h2>
+                        <span class="tag">Contract End</span>
+                    </div>
+                </div>
+                <p>Either party may terminate the Contract with 14 days' written notice if the other party is in
+                    material breach and has failed to remedy the breach within 7 days of written notification.</p>
+                <p>In the event of Client-initiated termination without cause, the Client shall pay the Company for all
+                    work completed to the date of termination, plus a reasonable sum to cover loss of anticipated
+                    profit, demobilization costs, and material restocking charges.</p>
+                <p>The Company may immediately suspend or terminate the Contract without notice if the Client becomes
+                    insolvent, enters administration, or fails to make payment beyond 30 days of the due date.</p>
+            </section>
+
+            <!-- 11 -->
+            <section class="term-section" id="s11">
+                <div class="section-header">
+                    <div class="section-num">11</div>
+                    <div class="section-title-wrap">
+                        <h2>Dispute Resolution</h2>
+                        <span class="tag">Conflict</span>
+                    </div>
+                </div>
+                <p>In the event of a dispute arising from or in connection with the Contract, the parties agree to first
+                    attempt resolution through good-faith negotiation between senior representatives within 14 days of
+                    written notice of the dispute.</p>
+                <p>If the dispute is not resolved through negotiation, the parties agree to refer the matter to
+                    mediation before initiating any legal proceedings. The mediator will be appointed by mutual
+                    agreement or, failing that, by the relevant industry body.</p>
+                <div class="callout">
+                    <strong>Adjudication Rights</strong>
+                    Nothing in this clause prevents either party from exercising statutory rights of adjudication under
+                    applicable construction legislation where such rights exist.
+                </div>
+            </section>
+
+            <!-- 12 -->
+            <section class="term-section" id="s12">
+                <div class="section-header">
+                    <div class="section-num">12</div>
+                    <div class="section-title-wrap">
+                        <h2>Governing Law</h2>
+                        <span class="tag">Jurisdiction</span>
+                    </div>
+                </div>
+                <p>These Terms &amp; Conditions and any Contract formed under them shall be governed by and construed in
+                    accordance with the laws of the jurisdiction in which the project site is located, without regard to
+                    conflict of law principles.</p>
+                <p>The parties irrevocably submit to the exclusive jurisdiction of the courts of that jurisdiction for
+                    the resolution of any disputes not settled by alternative dispute resolution processes.</p>
+            </section>
+
+            <!-- 13 -->
+            <section class="term-section" id="s13">
+                <div class="section-header">
+                    <div class="section-num">13</div>
+                    <div class="section-title-wrap">
+                        <h2>Privacy &amp; Data</h2>
+                        <span class="tag">Information</span>
+                    </div>
+                </div>
+                <p>The Company collects Client information solely for the purposes of delivering contracted services,
+                    communicating about the project, and fulfilling legal and regulatory obligations. We do not sell or
+                    share personal information with third parties for marketing purposes.</p>
+                <ul class="term-list">
+                    <li>Project photography may be used for portfolio and marketing purposes unless the Client objects
+                        in writing.</li>
+                    <li>Client data is retained for a minimum of 7 years to comply with legal and warranty obligations.
+                    </li>
+                    <li>Clients may request access to, correction of, or deletion of their data in accordance with
+                        applicable privacy legislation.</li>
+                </ul>
+            </section>
+
+            <!-- 14 -->
+            <section class="term-section" id="s14">
+                <div class="section-header">
+                    <div class="section-num">14</div>
+                    <div class="section-title-wrap">
+                        <h2>Contact Us</h2>
+                        <span class="tag">Reach Out</span>
+                    </div>
+                </div>
+                <p>For questions, concerns, or formal notices relating to these Terms &amp; Conditions, please contact
+                    us through any of the following channels. Formal legal notices must be submitted in writing via post
+                    or email with read receipt requested.</p>
+                <div class="contact-card">
+                    <div class="contact-item">
+                        <span class="contact-label">Company Name</span>
+                        <span class="contact-value">Bansal Constructions</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value"><a href="mailto:legal@Bansal Constructions.com">legal@Bansal
+                                Constructions.com</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value"><a href="tel:+1800000000">+1 (800) 000-0000</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Office Address</span>
+                        <span class="contact-value">123 Industrial Drive, Suite 400</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Business Hours</span>
+                        <span class="contact-value">Mon – Fri, 8:00 AM – 5:00 PM</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Postal Address</span>
+                        <span class="contact-value">PO Box 1234, City, State 00000</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div>
+            <div class="footer-brand">Bansal<span>Constructions</span></div>
+            <div class="footer-copy" style="text-align:left; margin-top:4px;">© 2025 Bansal Constructions. All rights
+                reserved.</div>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Sitemap</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="footer-copy">These terms were last reviewed<br>May 2025 · v3.2</div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Back to top">↑</button>
+
+    <script>
+        // Scroll-to-top button
+        const btn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            btn.classList.toggle('visible', window.scrollY > 400);
+        });
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Stagger section animations on scroll
+        const sections = document.querySelectorAll('.term-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = `${i * 0.04}s`;
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(s => {
+            s.style.animationPlayState = 'paused';
+            observer.observe(s);
+        });
+    </script>
+
+</body>
+
+</html>
