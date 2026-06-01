@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terms & Conditions — Bansal Constructions</title>
-    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="icon" type="image/x-icon" href="logo.ico" />
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap"
         rel="stylesheet" />
@@ -20,7 +20,7 @@
             --white: #f5f0ea;
             --amber: #f5a623;
             --amber-dim: #b87b18;
-            --gold: #C9A84C;
+            --gold: #c9a84c;
         }
 
         *,
@@ -38,7 +38,7 @@
         body {
             background: var(--black);
             color: var(--white);
-            font-family: 'Barlow', sans-serif;
+            font-family: "Barlow", sans-serif;
             font-weight: 300;
             line-height: 1.75;
             font-size: 16px;
@@ -47,7 +47,7 @@
 
         /* ── NOISE TEXTURE OVERLAY ── */
         body::before {
-            content: '';
+            content: "";
             position: fixed;
             inset: 0;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
@@ -81,7 +81,7 @@
         }
 
         .nav-logo {
-            font-family: 'Bebas Neue', sans-serif;
+            font-family: "Bebas Neue", sans-serif;
             font-size: clamp(1.4rem, 4vw, 1.8rem);
             letter-spacing: 0.12em;
             color: var(--white);
@@ -99,7 +99,7 @@
             background: var(--iron);
             border: 1px solid var(--amber);
             color: var(--amber);
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-size: 0.65rem;
             font-weight: 700;
             letter-spacing: 0.18em;
@@ -116,12 +116,12 @@
         }
 
         .hero::after {
-            content: 'TERMS';
+            content: "TERMS";
             position: absolute;
             right: -0.02em;
             top: 50%;
             transform: translateY(-50%);
-            font-family: 'Bebas Neue', sans-serif;
+            font-family: "Bebas Neue", sans-serif;
             font-size: clamp(6rem, 20vw, 16rem);
             color: var(--charcoal);
             line-height: 1;
@@ -131,7 +131,7 @@
         }
 
         .hero-eyebrow {
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.25em;
@@ -144,7 +144,7 @@
         }
 
         .hero-eyebrow::before {
-            content: '';
+            content: "";
             display: inline-block;
             width: 28px;
             height: 2px;
@@ -152,7 +152,7 @@
         }
 
         .hero h1 {
-            font-family: 'Bebas Neue', sans-serif;
+            font-family: "Bebas Neue", sans-serif;
             font-size: clamp(2.8rem, 10vw, 6.5rem);
             line-height: 0.95;
             letter-spacing: 0.04em;
@@ -173,7 +173,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-size: 0.8rem;
             letter-spacing: 0.1em;
             color: var(--concrete);
@@ -189,7 +189,7 @@
         }
 
         .hero-meta span::before {
-            content: '▮';
+            content: "▮";
             color: var(--amber);
             font-size: 0.5rem;
         }
@@ -229,7 +229,7 @@
         }
 
         .toc-title {
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.25em;
@@ -256,7 +256,7 @@
 
         .toc-list li a {
             display: block;
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-size: 0.82rem;
             font-weight: 500;
             letter-spacing: 0.05em;
@@ -265,7 +265,9 @@
             padding: 0.4rem 0;
             border-left: 2px solid transparent;
             padding-left: 0.75rem;
-            transition: color 0.2s, border-color 0.2s;
+            transition:
+                color 0.2s,
+                border-color 0.2s;
             white-space: nowrap;
         }
 
@@ -328,7 +330,7 @@
         }
 
         .section-num {
-            font-family: 'Bebas Neue', sans-serif;
+            font-family: "Bebas Neue", sans-serif;
             font-size: 3rem;
             color: var(--iron);
             line-height: 1;
@@ -337,7 +339,7 @@
         }
 
         .section-title-wrap h2 {
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-size: clamp(1.1rem, 3.5vw, 1.4rem);
             font-weight: 700;
             letter-spacing: 0.1em;
@@ -351,7 +353,7 @@
             margin-top: 4px;
             background: var(--steel);
             color: var(--concrete);
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-size: 0.62rem;
             font-weight: 700;
             letter-spacing: 0.18em;
@@ -387,7 +389,7 @@
         }
 
         .callout strong {
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -419,7 +421,7 @@
         }
 
         .term-list li::before {
-            content: '—';
+            content: "—";
             color: var(--amber);
             flex-shrink: 0;
             margin-top: 0.05em;
@@ -449,7 +451,7 @@
         }
 
         .contact-label {
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-size: 0.65rem;
             font-weight: 700;
             letter-spacing: 0.2em;
@@ -499,7 +501,7 @@
         }
 
         .acceptance-text strong {
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.2em;
@@ -529,7 +531,7 @@
         }
 
         .footer-brand {
-            font-family: 'Bebas Neue', sans-serif;
+            font-family: "Bebas Neue", sans-serif;
             font-size: 1.2rem;
             letter-spacing: 0.12em;
             color: var(--white);
@@ -552,7 +554,7 @@
         }
 
         .footer-links a {
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: "Barlow Condensed", sans-serif;
             font-size: 0.75rem;
             font-weight: 500;
             letter-spacing: 0.12em;
@@ -584,7 +586,9 @@
             z-index: 200;
             opacity: 0;
             transform: translateY(10px);
-            transition: opacity 0.3s, transform 0.3s;
+            transition:
+                opacity 0.3s,
+                transform 0.3s;
             pointer-events: none;
         }
 
@@ -601,7 +605,6 @@
 </head>
 
 <body>
-
     <div class="hazard-bar"></div>
 
     <nav>
@@ -625,39 +628,68 @@
         <div class="acceptance-icon">⚠</div>
         <div class="acceptance-text">
             <strong>Important Notice</strong>
-            <p>By engaging our services, visiting our website, or signing any contract with Bansal Constructions, you
-                confirm that you have read, understood, and agree to be bound by these Terms &amp; Conditions in their
-                entirety.</p>
+            <p>
+                By engaging our services, visiting our website, or signing any
+                contract with Bansal Constructions, you confirm that you have read,
+                understood, and agree to be bound by these Terms &amp; Conditions in
+                their entirety.
+            </p>
         </div>
     </div>
 
     <!-- BODY -->
     <div class="page-wrap">
-
         <!-- SIDEBAR TOC -->
         <aside class="toc">
             <div class="toc-title">Contents</div>
             <ul class="toc-list">
-                <li><a href="#s1"><span class="toc-number">01</span> Definitions</a></li>
-                <li><a href="#s2"><span class="toc-number">02</span> Scope of Services</a></li>
-                <li><a href="#s3"><span class="toc-number">03</span> Quotations &amp; Estimates</a></li>
-                <li><a href="#s4"><span class="toc-number">04</span> Payment Terms</a></li>
-                <li><a href="#s5"><span class="toc-number">05</span> Project Timeline</a></li>
-                <li><a href="#s6"><span class="toc-number">06</span> Client Responsibilities</a></li>
-                <li><a href="#s7"><span class="toc-number">07</span> Safety &amp; Compliance</a></li>
-                <li><a href="#s8"><span class="toc-number">08</span> Liability</a></li>
-                <li><a href="#s9"><span class="toc-number">09</span> Warranty</a></li>
-                <li><a href="#s10"><span class="toc-number">10</span> Termination</a></li>
-                <li><a href="#s11"><span class="toc-number">11</span> Disputes</a></li>
-                <li><a href="#s12"><span class="toc-number">12</span> Governing Law</a></li>
-                <li><a href="#s13"><span class="toc-number">13</span> Privacy</a></li>
-                <li><a href="#s14"><span class="toc-number">14</span> Contact</a></li>
+                <li>
+                    <a href="#s1"><span class="toc-number">01</span> Definitions</a>
+                </li>
+                <li>
+                    <a href="#s2"><span class="toc-number">02</span> Scope of Services</a>
+                </li>
+                <li>
+                    <a href="#s3"><span class="toc-number">03</span> Quotations &amp; Estimates</a>
+                </li>
+                <li>
+                    <a href="#s4"><span class="toc-number">04</span> Payment Terms</a>
+                </li>
+                <li>
+                    <a href="#s5"><span class="toc-number">05</span> Project Timeline</a>
+                </li>
+                <li>
+                    <a href="#s6"><span class="toc-number">06</span> Client Responsibilities</a>
+                </li>
+                <li>
+                    <a href="#s7"><span class="toc-number">07</span> Safety &amp; Compliance</a>
+                </li>
+                <li>
+                    <a href="#s8"><span class="toc-number">08</span> Liability</a>
+                </li>
+                <li>
+                    <a href="#s9"><span class="toc-number">09</span> Warranty</a>
+                </li>
+                <li>
+                    <a href="#s10"><span class="toc-number">10</span> Termination</a>
+                </li>
+                <li>
+                    <a href="#s11"><span class="toc-number">11</span> Disputes</a>
+                </li>
+                <li>
+                    <a href="#s12"><span class="toc-number">12</span> Governing Law</a>
+                </li>
+                <li>
+                    <a href="#s13"><span class="toc-number">13</span> Privacy</a>
+                </li>
+                <li>
+                    <a href="#s14"><span class="toc-number">14</span> Contact</a>
+                </li>
             </ul>
         </aside>
 
         <!-- MAIN -->
         <main class="content">
-
             <!-- 01 -->
             <section class="term-section" id="s1">
                 <div class="section-header">
@@ -667,19 +699,36 @@
                         <span class="tag">Terminology</span>
                     </div>
                 </div>
-                <p>Throughout these Terms &amp; Conditions, the following definitions shall apply:</p>
+                <p>
+                    Throughout these Terms &amp; Conditions, the following definitions
+                    shall apply:
+                </p>
                 <ul class="term-list">
-                    <li><strong>"Company"</strong> refers to Bansal Constructions, its employees, subcontractors,
-                        agents, and authorized representatives.</li>
-                    <li><strong>"Client"</strong> refers to any individual, business, or entity that engages the Company
-                        for construction or related services.</li>
-                    <li><strong>"Project"</strong> means the specific construction, renovation, or service work agreed
-                        upon in writing.</li>
-                    <li><strong>"Contract"</strong> means the written agreement, proposal, or work order executed
-                        between the Company and the Client.</li>
-                    <li><strong>"Site"</strong> refers to the physical property where work is to be performed.</li>
-                    <li><strong>"Variation"</strong> means any change to the agreed scope of work requested by either
-                        party after project commencement.</li>
+                    <li>
+                        <strong>"Company"</strong> refers to Bansal Constructions, its
+                        employees, subcontractors, agents, and authorized representatives.
+                    </li>
+                    <li>
+                        <strong>"Client"</strong> refers to any individual, business, or
+                        entity that engages the Company for construction or related
+                        services.
+                    </li>
+                    <li>
+                        <strong>"Project"</strong> means the specific construction,
+                        renovation, or service work agreed upon in writing.
+                    </li>
+                    <li>
+                        <strong>"Contract"</strong> means the written agreement, proposal,
+                        or work order executed between the Company and the Client.
+                    </li>
+                    <li>
+                        <strong>"Site"</strong> refers to the physical property where work
+                        is to be performed.
+                    </li>
+                    <li>
+                        <strong>"Variation"</strong> means any change to the agreed scope
+                        of work requested by either party after project commencement.
+                    </li>
                 </ul>
             </section>
 
@@ -692,16 +741,24 @@
                         <span class="tag">Service Agreement</span>
                     </div>
                 </div>
-                <p>The Company agrees to provide construction, renovation, and related services as explicitly outlined
-                    in the signed Contract. All work will be performed in accordance with accepted industry standards
-                    and applicable local building codes.</p>
-                <p>Any work not explicitly listed in the Contract is considered outside the project scope and will be
-                    subject to a separate quotation and written approval. The Company reserves the right to decline
-                    additional work requests that materially alter the project timeline or resource allocation.</p>
+                <p>
+                    The Company agrees to provide construction, renovation, and related
+                    services as explicitly outlined in the signed Contract. All work
+                    will be performed in accordance with accepted industry standards and
+                    applicable local building codes.
+                </p>
+                <p>
+                    Any work not explicitly listed in the Contract is considered outside
+                    the project scope and will be subject to a separate quotation and
+                    written approval. The Company reserves the right to decline
+                    additional work requests that materially alter the project timeline
+                    or resource allocation.
+                </p>
                 <div class="callout">
                     <strong>Important</strong>
-                    All scope changes must be documented in writing via a signed Variation Order before any additional
-                    work commences. Verbal instructions alone do not constitute authorization.
+                    All scope changes must be documented in writing via a signed
+                    Variation Order before any additional work commences. Verbal
+                    instructions alone do not constitute authorization.
                 </div>
             </section>
 
@@ -714,17 +771,32 @@
                         <span class="tag">Pricing</span>
                     </div>
                 </div>
-                <p>All quotations provided by the Company are valid for 30 days from the date of issue unless otherwise
-                    stated in writing. Quotations are based on information available at the time of preparation and may
-                    be subject to revision if site conditions, material costs, or project specifications change.</p>
-                <p>Estimates are provided in good faith based on available information and are not binding. Final
-                    project costs may vary due to unforeseen site conditions, material price fluctuations, design
-                    changes, or regulatory requirements discovered during construction.</p>
+                <p>
+                    All quotations provided by the Company are valid for 30 days from
+                    the date of issue unless otherwise stated in writing. Quotations are
+                    based on information available at the time of preparation and may be
+                    subject to revision if site conditions, material costs, or project
+                    specifications change.
+                </p>
+                <p>
+                    Estimates are provided in good faith based on available information
+                    and are not binding. Final project costs may vary due to unforeseen
+                    site conditions, material price fluctuations, design changes, or
+                    regulatory requirements discovered during construction.
+                </p>
                 <ul class="term-list">
-                    <li>GST/VAT and applicable taxes are not included unless explicitly stated.</li>
-                    <li>Allowances for materials are based on standard pricing; premium selections may incur additional
-                        costs.</li>
-                    <li>Provisional sums are estimates only and will be adjusted based on actual expenditure.</li>
+                    <li>
+                        GST/VAT and applicable taxes are not included unless explicitly
+                        stated.
+                    </li>
+                    <li>
+                        Allowances for materials are based on standard pricing; premium
+                        selections may incur additional costs.
+                    </li>
+                    <li>
+                        Provisional sums are estimates only and will be adjusted based on
+                        actual expenditure.
+                    </li>
                 </ul>
             </section>
 
@@ -737,21 +809,33 @@
                         <span class="tag">Financial</span>
                     </div>
                 </div>
-                <p>Payment schedules are outlined in the Contract and are linked to project milestones or progress
-                    claims as agreed. Invoices are issued upon milestone completion and are payable within 14 calendar
-                    days of the invoice date.</p>
+                <p>
+                    Payment schedules are outlined in the Contract and are linked to
+                    project milestones or progress claims as agreed. Invoices are issued
+                    upon milestone completion and are payable within 14 calendar days of
+                    the invoice date.
+                </p>
                 <div class="callout danger">
                     <strong>Late Payment</strong>
-                    Accounts overdue by more than 14 days will incur a late payment fee of 1.5% per month on the
-                    outstanding balance. The Company reserves the right to suspend work without liability if payments
-                    are not made in accordance with agreed terms.
+                    Accounts overdue by more than 14 days will incur a late payment fee
+                    of 1.5% per month on the outstanding balance. The Company reserves
+                    the right to suspend work without liability if payments are not made
+                    in accordance with agreed terms.
                 </div>
                 <ul class="term-list">
-                    <li>A deposit of up to 10% of the total project value may be required before work commences.</li>
-                    <li>Retention amounts, where applicable, will be specified in the Contract.</li>
+                    <li>
+                        A deposit of up to 10% of the total project value may be required
+                        before work commences.
+                    </li>
+                    <li>
+                        Retention amounts, where applicable, will be specified in the
+                        Contract.
+                    </li>
                     <li>Final payment is due within 7 days of practical completion.</li>
-                    <li>The Client may not withhold payment due to incomplete variations or disputed items unless agreed
-                        in writing.</li>
+                    <li>
+                        The Client may not withhold payment due to incomplete variations
+                        or disputed items unless agreed in writing.
+                    </li>
                 </ul>
             </section>
 
@@ -764,17 +848,25 @@
                         <span class="tag">Scheduling</span>
                     </div>
                 </div>
-                <p>Project timelines and completion dates provided by the Company are estimates made in good faith.
-                    While the Company endeavors to meet all agreed dates, delays may arise due to factors beyond the
-                    Company's reasonable control.</p>
-                <p>Events including but not limited to adverse weather conditions, delayed delivery of materials, supply
-                    chain disruptions, regulatory approvals, industrial disputes, or acts of God constitute force
-                    majeure events. The Company will not be held liable for delays caused by such events, and the
-                    project timeline will be extended accordingly.</p>
+                <p>
+                    Project timelines and completion dates provided by the Company are
+                    estimates made in good faith. While the Company endeavors to meet
+                    all agreed dates, delays may arise due to factors beyond the
+                    Company's reasonable control.
+                </p>
+                <p>
+                    Events including but not limited to adverse weather conditions,
+                    delayed delivery of materials, supply chain disruptions, regulatory
+                    approvals, industrial disputes, or acts of God constitute force
+                    majeure events. The Company will not be held liable for delays
+                    caused by such events, and the project timeline will be extended
+                    accordingly.
+                </p>
                 <div class="callout">
                     <strong>Client-Caused Delays</strong>
-                    Delays caused by late client decisions, failure to provide site access, or incomplete approvals may
-                    result in additional costs and timeline extensions, which will be documented via a Variation Order.
+                    Delays caused by late client decisions, failure to provide site
+                    access, or incomplete approvals may result in additional costs and
+                    timeline extensions, which will be documented via a Variation Order.
                 </div>
             </section>
 
@@ -787,19 +879,39 @@
                         <span class="tag">Obligations</span>
                     </div>
                 </div>
-                <p>The Client agrees to fulfill the following obligations to enable the successful delivery of the
-                    project:</p>
+                <p>
+                    The Client agrees to fulfill the following obligations to enable the
+                    successful delivery of the project:
+                </p>
                 <ul class="term-list">
-                    <li>Provide unrestricted site access during agreed working hours (typically Monday–Friday, 7:00 AM –
-                        5:00 PM).</li>
-                    <li>Ensure all necessary permits and approvals are obtained prior to project commencement unless
-                        otherwise agreed.</li>
-                    <li>Notify the Company promptly of any known hazards, underground services, or site-specific
-                        conditions.</li>
-                    <li>Make timely decisions and provide approvals when requested to avoid project delays.</li>
-                    <li>Ensure adequate water and electrical supply is available at the site where required.</li>
-                    <li>Remove or arrange removal of any personal property that may obstruct construction work.</li>
-                    <li>Notify neighbors of upcoming work where required by local ordinance.</li>
+                    <li>
+                        Provide unrestricted site access during agreed working hours
+                        (typically Monday–Friday, 7:00 AM – 5:00 PM).
+                    </li>
+                    <li>
+                        Ensure all necessary permits and approvals are obtained prior to
+                        project commencement unless otherwise agreed.
+                    </li>
+                    <li>
+                        Notify the Company promptly of any known hazards, underground
+                        services, or site-specific conditions.
+                    </li>
+                    <li>
+                        Make timely decisions and provide approvals when requested to
+                        avoid project delays.
+                    </li>
+                    <li>
+                        Ensure adequate water and electrical supply is available at the
+                        site where required.
+                    </li>
+                    <li>
+                        Remove or arrange removal of any personal property that may
+                        obstruct construction work.
+                    </li>
+                    <li>
+                        Notify neighbors of upcoming work where required by local
+                        ordinance.
+                    </li>
                 </ul>
             </section>
 
@@ -812,21 +924,32 @@
                         <span class="tag">WH&amp;S / Regulations</span>
                     </div>
                 </div>
-                <p>The Company is committed to maintaining the highest standards of workplace health and safety. All
-                    personnel will operate in accordance with applicable occupational health and safety legislation,
-                    regulations, and site-specific safety plans.</p>
-                <p>The Client must ensure that all other parties on site comply with the Company's safety requirements.
-                    Unauthorized persons, including Client representatives, are not permitted in active work zones
-                    without prior arrangement and appropriate personal protective equipment (PPE).</p>
+                <p>
+                    The Company is committed to maintaining the highest standards of
+                    workplace health and safety. All personnel will operate in
+                    accordance with applicable occupational health and safety
+                    legislation, regulations, and site-specific safety plans.
+                </p>
+                <p>
+                    The Client must ensure that all other parties on site comply with
+                    the Company's safety requirements. Unauthorized persons, including
+                    Client representatives, are not permitted in active work zones
+                    without prior arrangement and appropriate personal protective
+                    equipment (PPE).
+                </p>
                 <div class="callout danger">
                     <strong>Safety Authority</strong>
-                    The Company's site supervisor has the authority to stop work and remove any individual from the site
-                    if they pose a safety risk — including the Client or their representatives. Work will only resume
+                    The Company's site supervisor has the authority to stop work and
+                    remove any individual from the site if they pose a safety risk —
+                    including the Client or their representatives. Work will only resume
                     when the safety concern is resolved.
                 </div>
-                <p>All work will comply with relevant building codes, environmental regulations, and local council
-                    requirements. Where regulatory inspections are required, the Company will coordinate with the
-                    appropriate authorities.</p>
+                <p>
+                    All work will comply with relevant building codes, environmental
+                    regulations, and local council requirements. Where regulatory
+                    inspections are required, the Company will coordinate with the
+                    appropriate authorities.
+                </p>
             </section>
 
             <!-- 08 -->
@@ -838,18 +961,31 @@
                         <span class="tag">Legal Protection</span>
                     </div>
                 </div>
-                <p>To the maximum extent permitted by applicable law, the Company's total liability to the Client for
-                    any claim arising out of or in connection with the Contract shall not exceed the total fees paid by
-                    the Client to the Company in the three months preceding the claim.</p>
-                <p>The Company shall not be liable for any indirect, consequential, incidental, or special damages
-                    including but not limited to loss of profit, loss of use, business interruption, or loss of data,
-                    whether arising in contract, tort, or otherwise.</p>
+                <p>
+                    To the maximum extent permitted by applicable law, the Company's
+                    total liability to the Client for any claim arising out of or in
+                    connection with the Contract shall not exceed the total fees paid by
+                    the Client to the Company in the three months preceding the claim.
+                </p>
+                <p>
+                    The Company shall not be liable for any indirect, consequential,
+                    incidental, or special damages including but not limited to loss of
+                    profit, loss of use, business interruption, or loss of data, whether
+                    arising in contract, tort, or otherwise.
+                </p>
                 <ul class="term-list">
-                    <li>The Company is not liable for pre-existing defects, hidden conditions, or structural issues not
-                        visible at the time of quotation.</li>
-                    <li>Liability for damage caused by third-party subcontractors will be limited to insurance recovery
-                        from the relevant subcontractor.</li>
-                    <li>The Company carries public liability insurance; certificates are available upon written request.
+                    <li>
+                        The Company is not liable for pre-existing defects, hidden
+                        conditions, or structural issues not visible at the time of
+                        quotation.
+                    </li>
+                    <li>
+                        Liability for damage caused by third-party subcontractors will be
+                        limited to insurance recovery from the relevant subcontractor.
+                    </li>
+                    <li>
+                        The Company carries public liability insurance; certificates are
+                        available upon written request.
                     </li>
                 </ul>
             </section>
@@ -863,19 +999,29 @@
                         <span class="tag">Guarantees</span>
                     </div>
                 </div>
-                <p>The Company warrants that all work will be performed in a professional and workmanlike manner, free
-                    from material defects in workmanship, for a period of 12 months from the date of practical
-                    completion ("Defects Liability Period").</p>
-                <p>Manufacturer warranties apply to materials and products supplied and are subject to the terms issued
-                    by the respective manufacturers. The Company will assist in processing valid warranty claims.</p>
+                <p>
+                    The Company warrants that all work will be performed in a
+                    professional and workmanlike manner, free from material defects in
+                    workmanship, for a period of 12 months from the date of practical
+                    completion ("Defects Liability Period").
+                </p>
+                <p>
+                    Manufacturer warranties apply to materials and products supplied and
+                    are subject to the terms issued by the respective manufacturers. The
+                    Company will assist in processing valid warranty claims.
+                </p>
                 <div class="callout">
                     <strong>Warranty Exclusions</strong>
-                    The warranty does not cover defects arising from Client misuse, modification by others, normal wear
-                    and tear, extreme weather events, or failure to perform recommended maintenance.
+                    The warranty does not cover defects arising from Client misuse,
+                    modification by others, normal wear and tear, extreme weather
+                    events, or failure to perform recommended maintenance.
                 </div>
-                <p>Warranty claims must be submitted in writing within the Defects Liability Period. Upon valid
-                    notification, the Company will inspect and, where covered, rectify defects at no additional cost to
-                    the Client.</p>
+                <p>
+                    Warranty claims must be submitted in writing within the Defects
+                    Liability Period. Upon valid notification, the Company will inspect
+                    and, where covered, rectify defects at no additional cost to the
+                    Client.
+                </p>
             </section>
 
             <!-- 10 -->
@@ -887,13 +1033,23 @@
                         <span class="tag">Contract End</span>
                     </div>
                 </div>
-                <p>Either party may terminate the Contract with 14 days' written notice if the other party is in
-                    material breach and has failed to remedy the breach within 7 days of written notification.</p>
-                <p>In the event of Client-initiated termination without cause, the Client shall pay the Company for all
-                    work completed to the date of termination, plus a reasonable sum to cover loss of anticipated
-                    profit, demobilization costs, and material restocking charges.</p>
-                <p>The Company may immediately suspend or terminate the Contract without notice if the Client becomes
-                    insolvent, enters administration, or fails to make payment beyond 30 days of the due date.</p>
+                <p>
+                    Either party may terminate the Contract with 14 days' written notice
+                    if the other party is in material breach and has failed to remedy
+                    the breach within 7 days of written notification.
+                </p>
+                <p>
+                    In the event of Client-initiated termination without cause, the
+                    Client shall pay the Company for all work completed to the date of
+                    termination, plus a reasonable sum to cover loss of anticipated
+                    profit, demobilization costs, and material restocking charges.
+                </p>
+                <p>
+                    The Company may immediately suspend or terminate the Contract
+                    without notice if the Client becomes insolvent, enters
+                    administration, or fails to make payment beyond 30 days of the due
+                    date.
+                </p>
             </section>
 
             <!-- 11 -->
@@ -905,16 +1061,23 @@
                         <span class="tag">Conflict</span>
                     </div>
                 </div>
-                <p>In the event of a dispute arising from or in connection with the Contract, the parties agree to first
-                    attempt resolution through good-faith negotiation between senior representatives within 14 days of
-                    written notice of the dispute.</p>
-                <p>If the dispute is not resolved through negotiation, the parties agree to refer the matter to
-                    mediation before initiating any legal proceedings. The mediator will be appointed by mutual
-                    agreement or, failing that, by the relevant industry body.</p>
+                <p>
+                    In the event of a dispute arising from or in connection with the
+                    Contract, the parties agree to first attempt resolution through
+                    good-faith negotiation between senior representatives within 14 days
+                    of written notice of the dispute.
+                </p>
+                <p>
+                    If the dispute is not resolved through negotiation, the parties
+                    agree to refer the matter to mediation before initiating any legal
+                    proceedings. The mediator will be appointed by mutual agreement or,
+                    failing that, by the relevant industry body.
+                </p>
                 <div class="callout">
                     <strong>Adjudication Rights</strong>
-                    Nothing in this clause prevents either party from exercising statutory rights of adjudication under
-                    applicable construction legislation where such rights exist.
+                    Nothing in this clause prevents either party from exercising
+                    statutory rights of adjudication under applicable construction
+                    legislation where such rights exist.
                 </div>
             </section>
 
@@ -927,11 +1090,17 @@
                         <span class="tag">Jurisdiction</span>
                     </div>
                 </div>
-                <p>These Terms &amp; Conditions and any Contract formed under them shall be governed by and construed in
-                    accordance with the laws of the jurisdiction in which the project site is located, without regard to
-                    conflict of law principles.</p>
-                <p>The parties irrevocably submit to the exclusive jurisdiction of the courts of that jurisdiction for
-                    the resolution of any disputes not settled by alternative dispute resolution processes.</p>
+                <p>
+                    These Terms &amp; Conditions and any Contract formed under them
+                    shall be governed by and construed in accordance with the laws of
+                    the jurisdiction in which the project site is located, without
+                    regard to conflict of law principles.
+                </p>
+                <p>
+                    The parties irrevocably submit to the exclusive jurisdiction of the
+                    courts of that jurisdiction for the resolution of any disputes not
+                    settled by alternative dispute resolution processes.
+                </p>
             </section>
 
             <!-- 13 -->
@@ -943,16 +1112,25 @@
                         <span class="tag">Information</span>
                     </div>
                 </div>
-                <p>The Company collects Client information solely for the purposes of delivering contracted services,
-                    communicating about the project, and fulfilling legal and regulatory obligations. We do not sell or
-                    share personal information with third parties for marketing purposes.</p>
+                <p>
+                    The Company collects Client information solely for the purposes of
+                    delivering contracted services, communicating about the project, and
+                    fulfilling legal and regulatory obligations. We do not sell or share
+                    personal information with third parties for marketing purposes.
+                </p>
                 <ul class="term-list">
-                    <li>Project photography may be used for portfolio and marketing purposes unless the Client objects
-                        in writing.</li>
-                    <li>Client data is retained for a minimum of 7 years to comply with legal and warranty obligations.
+                    <li>
+                        Project photography may be used for portfolio and marketing
+                        purposes unless the Client objects in writing.
                     </li>
-                    <li>Clients may request access to, correction of, or deletion of their data in accordance with
-                        applicable privacy legislation.</li>
+                    <li>
+                        Client data is retained for a minimum of 7 years to comply with
+                        legal and warranty obligations.
+                    </li>
+                    <li>
+                        Clients may request access to, correction of, or deletion of their
+                        data in accordance with applicable privacy legislation.
+                    </li>
                 </ul>
             </section>
 
@@ -965,9 +1143,12 @@
                         <span class="tag">Reach Out</span>
                     </div>
                 </div>
-                <p>For questions, concerns, or formal notices relating to these Terms &amp; Conditions, please contact
-                    us through any of the following channels. Formal legal notices must be submitted in writing via post
-                    or email with read receipt requested.</p>
+                <p>
+                    For questions, concerns, or formal notices relating to these Terms
+                    &amp; Conditions, please contact us through any of the following
+                    channels. Formal legal notices must be submitted in writing via post
+                    or email with read receipt requested.
+                </p>
                 <div class="contact-card">
                     <div class="contact-item">
                         <span class="contact-label">Company Name</span>
@@ -975,7 +1156,8 @@
                     </div>
                     <div class="contact-item">
                         <span class="contact-label">Email</span>
-                        <span class="contact-value"><a href="mailto:bansalconstructions.official@gmail.com">info@bansalconstructions.com</a></span>
+                        <span class="contact-value"><a
+                                href="mailto:bansalconstructions.official@gmail.com">info@bansalconstructions.com</a></span>
                     </div>
                     <div class="contact-item">
                         <span class="contact-label">Phone</span>
@@ -995,7 +1177,6 @@
                     </div>
                 </div>
             </section>
-
         </main>
     </div>
 
@@ -1003,8 +1184,9 @@
     <footer>
         <div>
             <div class="footer-brand">Bansal<span>Constructions</span></div>
-            <div class="footer-copy" style="text-align:left; margin-top:4px;">© 2026 Bansal Constructions. All rights
-                reserved.</div>
+            <div class="footer-copy" style="text-align: left; margin-top: 4px">
+                © 2026 Bansal Constructions. All rights reserved.
+            </div>
         </div>
         <div class="footer-links">
             <a href="privacy.html">Privacy Policy</a>
@@ -1012,37 +1194,143 @@
             <a href="sitemap.html">Sitemap</a>
             <a href="contact.html">Contact</a>
         </div>
-        <div class="footer-copy">These terms were last reviewed<br>May 2026 · v3.2</div>
+        <div class="footer-copy">
+            These terms were last reviewed<br />May 2026 · v3.2
+        </div>
     </footer>
 
-    <button class="scroll-top" id="scrollTop" aria-label="Back to top">↑</button>
+    <button class="scroll-top" id="scrollTop" aria-label="Back to top">
+        ↑
+    </button>
 
     <script>
         // Scroll-to-top button
-        const btn = document.getElementById('scrollTop');
-        window.addEventListener('scroll', () => {
-            btn.classList.toggle('visible', window.scrollY > 400);
+        const btn = document.getElementById("scrollTop");
+        window.addEventListener("scroll", () => {
+            btn.classList.toggle("visible", window.scrollY > 400);
         });
-        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        btn.addEventListener("click", () =>
+            window.scrollTo({ top: 0, behavior: "smooth" }),
+        );
 
         // Stagger section animations on scroll
-        const sections = document.querySelectorAll('.term-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = `${i * 0.04}s`;
-                    entry.target.style.animationPlayState = 'running';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+        const sections = document.querySelectorAll(".term-section");
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = `${i * 0.04}s`;
+                        entry.target.style.animationPlayState = "running";
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1 },
+        );
 
-        sections.forEach(s => {
-            s.style.animationPlayState = 'paused';
+        sections.forEach((s) => {
+            s.style.animationPlayState = "paused";
             observer.observe(s);
         });
     </script>
+    <script>
+        const TitleManager = {
+            // Internal State
+            baseTitle: document.title,
+            currentInterval: null,
+            unreadCount: 0,
 
+            // Core Helper: Safely clears any active animation
+            clearActiveAnimation() {
+                clearInterval(this.currentInterval);
+                this.currentInterval = null;
+                this.updateDisplay();
+            },
+
+            // Core Helper: Refreshes the title with the unread count prefix if applicable
+            updateDisplay(text = this.baseTitle) {
+                const prefix = this.unreadCount > 0 ? `(${this.unreadCount}) ` : "";
+                document.title = prefix + text;
+            },
+
+            // 1. DYNAMIC UNREAD COUNTER
+            setUnreadCount(count) {
+                this.unreadCount = count;
+                this.updateDisplay();
+            },
+
+            clearUnreadCount() {
+                this.unreadCount = 0;
+                this.updateDisplay();
+            },
+
+            // 2. THE MARQUEE SCROLLER
+            startMarquee(speed = 150) {
+                this.clearActiveAnimation();
+                let text = this.baseTitle + "   |   "; // Added spacing for smooth looping
+
+                this.currentInterval = setInterval(() => {
+                    text = text.substring(1) + text.substring(0, 1);
+                    this.updateDisplay(text);
+                }, speed);
+            },
+
+            // 3. THE LIVE TYPING EFFECT
+            type(newMessage, speed = 100, holdTime = 3000) {
+                this.clearActiveAnimation();
+                let index = 0;
+                let direction = 1; // 1 = typing forward, -1 = deleting
+                let currentText = "";
+
+                this.currentInterval = setInterval(() => {
+                    if (direction === 1) {
+                        currentText = newMessage.substring(0, index + 1);
+                        this.updateDisplay(currentText);
+                        index++;
+
+                        // Finished typing
+                        if (index === newMessage.length) {
+                            direction = 0; // Pause state
+                            setTimeout(() => {
+                                direction = -1;
+                            }, holdTime); // Hold before deleting
+                        }
+                    } else if (direction === -1) {
+                        currentText = newMessage.substring(0, index - 1);
+                        this.updateDisplay(currentText);
+                        index--;
+
+                        // Finished deleting, loop back to main marquee
+                        if (index === 0) {
+                            this.startMarquee();
+                        }
+                    }
+                }, speed);
+            },
+
+            // 4. SMART ATTENTION GRABBER (Visibility API)
+            initVisibilityCheck() {
+                document.addEventListener("visibilitychange", () => {
+                    if (document.hidden) {
+                        // User left: Flash an emergency notice
+                        this.clearActiveAnimation();
+                        let toggle = false;
+                        this.currentInterval = setInterval(() => {
+                            document.title = toggle ? "📢 WE MISS YOU!" : "👀 Come Look!";
+                            toggle = !toggle;
+                        }, 800);
+                    } else {
+                        // User returned: Go back to normal marquee
+                        this.startMarquee();
+                    }
+                });
+            },
+        };
+
+        // --- RUN UPON PAGE LOAD ---
+        TitleManager.startMarquee(); // Start rolling the text
+        TitleManager.initVisibilityCheck(); // Listen for tab switches
+    </script>
 </body>
 
 </html>
