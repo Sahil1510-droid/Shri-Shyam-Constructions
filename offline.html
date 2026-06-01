@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You are Offline - Bansal Constructions</title>
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            background-color: #f8fafc;
+            color: #334155;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .retry-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #007aff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚧 You are currently offline</h1>
+        <p>It looks like your internet connection dropped. Don't worry, once you're back online, you can resume
+            exploring our 3D models and blueprints!</p>
+        <a href="javascript:window.location.reload();" class="retry-btn">🔄 Retry Connection</a>
+    </div>
+
+
+
+    <script>
+        const TitleManager = {
+            // Internal State
+            baseTitle: document.title,
+            currentInterval: null,
+            unreadCount: 0,
+
+            // Core Helper: Safely clears any active animation
+            clearActiveAnimation() {
+                clearInterval(this.currentInterval);
+                this.currentInterval = null;
+                this.updateDisplay();
+            },
+
+            // Core Helper: Refreshes the title with the unread count prefix if applicable
+            updateDisplay(text = this.baseTitle) {
+                const prefix = this.unreadCount > 0 ? `(${this.unreadCount}) ` : '';
+                document.title = prefix + text;
+            },
+
+            // 1. DYNAMIC UNREAD COUNTER
+            setUnreadCount(count) {
+                this.unreadCount = count;
+                this.updateDisplay();
+            },
+
+            clearUnreadCount() {
+                this.unreadCount = 0;
+                this.updateDisplay();
+            },
+
+            // 2. THE MARQUEE SCROLLER
+            startMarquee(speed = 150) {
+                this.clearActiveAnimation();
+                let text = this.baseTitle + "   |   "; // Added spacing for smooth looping
+
+                this.currentInterval = setInterval(() => {
+                    text = text.substring(1) + text.substring(0, 1);
+                    this.updateDisplay(text);
+                }, speed);
+            },
+
+            // 3. THE LIVE TYPING EFFECT
+            type(newMessage, speed = 100, holdTime = 3000) {
+                this.clearActiveAnimation();
+                let index = 0;
+                let direction = 1; // 1 = typing forward, -1 = deleting
+                let currentText = "";
+
+                this.currentInterval = setInterval(() => {
+                    if (direction === 1) {
+                        currentText = newMessage.substring(0, index + 1);
+                        this.updateDisplay(currentText);
+                        index++;
+
+                        // Finished typing
+                        if (index === newMessage.length) {
+                            direction = 0; // Pause state
+                            setTimeout(() => { direction = -1; }, holdTime); // Hold before deleting
+                        }
+                    } else if (direction === -1) {
+                        currentText = newMessage.substring(0, index - 1);
+                        this.updateDisplay(currentText);
+                        index--;
+
+                        // Finished deleting, loop back to main marquee
+                        if (index === 0) {
+                            this.startMarquee();
+                        }
+                    }
+                }, speed);
+            },
+
+            // 4. SMART ATTENTION GRABBER (Visibility API)
+            initVisibilityCheck() {
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        // User left: Flash an emergency notice
+                        this.clearActiveAnimation();
+                        let toggle = false;
+                        this.currentInterval = setInterval(() => {
+                            document.title = toggle ? "📢 WE MISS YOU!" : "👀 Come Look!";
+                            toggle = !toggle;
+                        }, 800);
+                    } else {
+                        // User returned: Go back to normal marquee
+                        this.startMarquee();
+                    }
+                });
+            }
+        };
+
+        // --- RUN UPON PAGE LOAD ---
+        TitleManager.startMarquee();        // Start rolling the text
+        TitleManager.initVisibilityCheck(); // Listen for tab switches
+
+    </script>
+</body>
+
+</html>
