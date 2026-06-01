@@ -176,7 +176,7 @@ document.addEventListener('mousemove', e => {
 (function () {
     const API_URL = "https://api.counterapi.dev/v2/sahil-bansals-team-2985/bansal-constructions/up";
     const POLL_MS = 1000;
-    const DIGITS = 4;
+    const DIGITS = 5;
     const CELL_H = 22;
 
     let current = 0;
