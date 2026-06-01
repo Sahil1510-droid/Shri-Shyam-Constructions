@@ -639,7 +639,7 @@
       margin: 0 1px;
     }
 
-    
+
 
     /* ─────────────────────────────────────────
      SECTION TITLES — fluid scaling
@@ -1291,16 +1291,16 @@
     <span id="visitorCount" style="display:none;">0</span>
   </div>
 
-<div id="footer-container"></div>
+  <div id="footer-container"></div>
 
-<script>
+  <script>
     fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-container').innerHTML = data;
-        });
-</script>
-  
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
