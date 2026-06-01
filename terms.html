@@ -10,6 +10,48 @@
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap"
         rel="stylesheet" />
     <style>
+        /* Target the whole page */
+        html {
+            --scrollbar-bg: #1e2229;
+            /* Dark slate track */
+            --scrollbar-thumb: #f2a900;
+            /* Structural accent (e.g., Construction Gold/Orange) */
+            --scrollbar-hover: #d49400;
+            /* Slightly darker shade for hover state */
+
+            /* Firefox Support */
+            scrollbar-width: thin;
+            scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
+        }
+
+        /* Webkit Browsers (Chrome, Safari, Edge, Opera) */
+        ::-webkit-scrollbar {
+            width: 10px;
+            /* Width of the vertical scrollbar */
+            height: 10px;
+            /* Height of the horizontal scrollbar */
+        }
+
+        /* The track (background) of the scrollbar */
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-bg);
+            border-radius: 4px;
+        }
+
+        /* The draggable thumb */
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 4px;
+            border: 2px solid var(--scrollbar-bg);
+            /* Creates a nice padding effect */
+            transition: background 0.3s ease;
+        }
+
+        /* Thumb behavior on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--scrollbar-hover);
+        }
+
         :root {
             --black: #0d0d0d;
             --charcoal: #1a1a1a;
