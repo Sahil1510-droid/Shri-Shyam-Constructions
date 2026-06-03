@@ -418,6 +418,20 @@
         box-sizing: border-box !important;
       }
 
+      /* Mobile Fix: Stacks the stats on screens smaller than 600px */
+      @media (max-width: 600px) {
+        .hero-stats {
+          flex-direction: column !important;
+          /* Changes row to column layout */
+          align-items: center !important;
+          /* Aligns text perfectly to the left */
+          gap: 20px !important;
+          /* Adds breathing room between the stats */
+          padding: 20px 24px !important;
+          /* Adjusts padding for mobile screens */
+        }
+      }
+
       .hero-stat {
         text-align: center;
         flex: 1;
