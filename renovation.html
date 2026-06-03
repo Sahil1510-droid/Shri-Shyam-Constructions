@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Barlow:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <script src="preloader.js"></script>
-<style>
+    <style>
         *,
         *::before,
         *::after {
@@ -19,41 +19,49 @@
             margin: 0;
             padding: 0;
         }
-/* Target the whole page */
-html {
-  --scrollbar-bg: #1e2229;       /* Dark slate track */
-  --scrollbar-thumb: #f2a900;    /* Structural accent (e.g., Construction Gold/Orange) */
-  --scrollbar-hover: #d49400;    /* Slightly darker shade for hover state */
-  
-  /* Firefox Support */
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
-}
 
-/* Webkit Browsers (Chrome, Safari, Edge, Opera) */
-::-webkit-scrollbar {
-  width: 10px;  /* Width of the vertical scrollbar */
-  height: 10px; /* Height of the horizontal scrollbar */
-}
+        /* Target the whole page */
+        html {
+            --scrollbar-bg: #1e2229;
+            /* Dark slate track */
+            --scrollbar-thumb: #f2a900;
+            /* Structural accent (e.g., Construction Gold/Orange) */
+            --scrollbar-hover: #d49400;
+            /* Slightly darker shade for hover state */
 
-/* The track (background) of the scrollbar */
-::-webkit-scrollbar-track {
-  background: var(--scrollbar-bg);
-  border-radius: 4px;
-}
+            /* Firefox Support */
+            scrollbar-width: thin;
+            scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
+        }
 
-/* The draggable thumb */
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 4px;
-  border: 2px solid var(--scrollbar-bg); /* Creates a nice padding effect */
-  transition: background 0.3s ease;
-}
+        /* Webkit Browsers (Chrome, Safari, Edge, Opera) */
+        ::-webkit-scrollbar {
+            width: 10px;
+            /* Width of the vertical scrollbar */
+            height: 10px;
+            /* Height of the horizontal scrollbar */
+        }
 
-/* Thumb behavior on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-hover);
-}
+        /* The track (background) of the scrollbar */
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-bg);
+            border-radius: 4px;
+        }
+
+        /* The draggable thumb */
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 4px;
+            border: 2px solid var(--scrollbar-bg);
+            /* Creates a nice padding effect */
+            transition: background 0.3s ease;
+        }
+
+        /* Thumb behavior on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--scrollbar-hover);
+        }
+
         :root {
             --gold: #C9A84C;
             --gold-light: #E8C96B;
@@ -977,12 +985,24 @@ html {
 
             .hero-stats {
                 position: static;
+                display: flex;
                 flex-direction: row;
+                flex-wrap: wrap;
+                /* Allows items to drop to the next line on mobile */
                 justify-content: flex-start;
                 gap: 2rem;
                 margin-top: 3rem;
+                margin-left: 2rem;
                 padding-top: 2rem;
                 border-top: 1px solid rgba(201, 168, 76, 0.15);
+            }
+
+            /* Optional: If you want them perfectly centered/stacked on mobile screens */
+            @media (max-width: 480px) {
+                .hero-stats {
+                    flex-direction: column;
+                    gap: 1.5rem;
+                }
             }
 
             .stat {

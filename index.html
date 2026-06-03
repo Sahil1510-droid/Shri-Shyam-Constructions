@@ -12,12 +12,6 @@
   <link rel="stylesheet" href="style.css">
   <script src="preloader.js"></script>
   <style>
-    /* =====================================================
-     MOBILE-FIRST IMPROVEMENTS
-     All changes are scoped and override style.css safely
-     ===================================================== */
-
-    /* ── Base touch / tap improvements ── */
     a,
     button,
     .service-card,
@@ -27,68 +21,255 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* ── Prevent horizontal scroll ── */
     html,
     body {
       max-width: 100%;
       overflow-x: hidden;
     }
 
-    /* ─────────────────────────────────────────
-     NAV
-  ───────────────────────────────────────── */
-    @media (max-width: 768px) {
-      nav {
-        padding: 0 4%;
-        height: 64px;
-      }
+    /* ══════════════════════════════
+       SERVICES DROPDOWN
+    ══════════════════════════════ */
+    .nav-item-dropdown {
+      position: relative;
+    }
 
-      nav.scrolled {
-        height: 56px;
-      }
+    /* The "Services" link with chevron */
+    .nav-item-dropdown>a {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-      .logo-name {
-        font-size: 1.1rem;
-      }
+    .nav-chevron {
+      width: 10px;
+      height: 10px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
 
-      .logo-sub {
-        font-size: .55rem;
-      }
+    .nav-item-dropdown:hover .nav-chevron,
+    .nav-item-dropdown.open .nav-chevron {
+      transform: rotate(180deg);
+    }
 
-      .logo-mark {
-        width: 34px;
-        height: 34px;
-      }
+    /* Dropdown panel */
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      width: 260px;
+      background: rgba(14, 14, 14, 0.97);
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 8px 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 1000;
+    }
 
-      /* Larger tap target for hamburger */
-      .hamburger {
-        padding: 10px;
-        margin-right: -10px;
-      }
+    /* Arrow notch pointing up */
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: rgba(14, 14, 14, 0.97);
+      border-left: 1px solid rgba(201, 168, 76, 0.18);
+      border-top: 1px solid rgba(201, 168, 76, 0.18);
+      rotate: 45deg;
+    }
 
-      .hamburger span {
-        width: 22px;
-      }
+    /* Show on hover or .open class */
+    .nav-item-dropdown:hover .nav-dropdown,
+    .nav-item-dropdown.open .nav-dropdown {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
 
-      /* Mobile menu — full screen with better sizing */
-      .mobile-menu {
-        gap: 28px;
-        padding: 20px;
-      }
+    /* Each dropdown item */
+    .nav-dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 20px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: .8rem;
+      letter-spacing: .06em;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s, padding-left 0.2s;
+      position: relative;
+    }
 
-      .mobile-menu a {
-        font-size: 2rem;
-        padding: 8px 0;
-        /* bigger tap target */
-        width: 100%;
-        text-align: center;
-      }
+    .nav-dropdown-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: center;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-dropdown-item:hover {
+      background: rgba(201, 168, 76, 0.06);
+      color: var(--gold);
+      padding-left: 24px;
+    }
+
+    .nav-dropdown-item:hover::before {
+      transform: scaleY(1);
+    }
+
+    /* Icon inside each item */
+    .nav-dropdown-icon {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .nav-dropdown-item:hover .nav-dropdown-icon {
+      border-color: var(--gold);
+      background: rgba(201, 168, 76, 0.1);
+    }
+
+    .nav-dropdown-icon svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.6;
+    }
+
+    /* Divider */
+    .nav-dropdown-divider {
+      height: 1px;
+      background: rgba(201, 168, 76, 0.1);
+      margin: 6px 0;
+    }
+
+    /* "All Services" footer link */
+    .nav-dropdown-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .nav-dropdown-footer:hover {
+      background: rgba(201, 168, 76, 0.08);
+    }
+
+    .nav-dropdown-footer svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 2;
+      transition: transform 0.2s;
+    }
+
+    .nav-dropdown-footer:hover svg {
+      transform: translateX(3px);
     }
 
 
     /* ══════════════════════════════
-           MSME BADGE
-        ══════════════════════════════ */
+       MOBILE DROPDOWN inside menu
+    ══════════════════════════════ */
+    .mobile-services-toggle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--text);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      text-align: center;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+
+    .mobile-services-toggle:hover {
+      color: var(--gold);
+    }
+
+    .mobile-services-toggle .mob-chevron {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.3s;
+    }
+
+    .mobile-services-toggle.open .mob-chevron {
+      transform: rotate(180deg);
+    }
+
+    .mobile-services-sub {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      width: 100%;
+      padding: 4px 0 8px;
+    }
+
+    .mobile-services-sub.open {
+      display: flex;
+    }
+
+    .mobile-services-sub a {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1rem !important;
+      color: var(--text-muted) !important;
+      padding: 8px 20px !important;
+      letter-spacing: .04em;
+      transition: color 0.2s;
+    }
+
+    .mobile-services-sub a:hover {
+      color: var(--gold) !important;
+    }
+
+    /* ══════════════════════════════
+       MSME BADGE
+    ══════════════════════════════ */
     .msme-badge {
       display: inline-flex;
       align-items: center;
@@ -135,16 +316,54 @@
       font-weight: 500;
     }
 
-
-
-    /* ─────────────────────────────────────────
-     HERO
-  ───────────────────────────────────────── */
+    /* ─── Mobile breakpoints (unchanged from your original) ─── */
     @media (max-width: 768px) {
+      nav {
+        padding: 0 4%;
+        height: 64px;
+      }
+
+      nav.scrolled {
+        height: 56px;
+      }
+
+      .logo-name {
+        font-size: 1.1rem;
+      }
+
+      .logo-sub {
+        font-size: .55rem;
+      }
+
+      .logo-mark {
+        width: 34px;
+        height: 34px;
+      }
+
+      .hamburger {
+        padding: 10px;
+        margin-right: -10px;
+      }
+
+      .hamburger span {
+        width: 22px;
+      }
+
+      .mobile-menu {
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .mobile-menu a {
+        font-size: 2rem;
+        padding: 8px 0;
+        width: 100%;
+        text-align: center;
+      }
+
       #hero {
         height: auto;
         min-height: 100svh;
-        /* safer than 100vh on mobile */
         padding-bottom: 90px;
       }
 
@@ -180,7 +399,6 @@
         font-size: .82rem;
       }
 
-      /* Stats — horizontal strip at bottom */
       .hero-stats {
         position: relative !important;
         bottom: auto !important;
@@ -214,26 +432,10 @@
         letter-spacing: .1em;
       }
 
-      /* Scroll indicator off on tiny screens */
       .scroll-indicator {
         display: none;
       }
-    }
 
-    @media (max-width: 380px) {
-      .hero-title {
-        font-size: 2.5rem;
-      }
-
-      .hero-stat-num {
-        font-size: 1.5rem;
-      }
-    }
-
-    /* ─────────────────────────────────────────
-     SECTION SPACING
-  ───────────────────────────────────────── */
-    @media (max-width: 768px) {
       section {
         padding: 64px 4%;
       }
@@ -245,33 +447,7 @@
       #stats {
         padding: 40px 4%;
       }
-    }
 
-    /* ─────────────────────────────────────────
-     ABOUT
-  ───────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      #about {
-        gap: 48px;
-      }
-
-      .about-visual {
-        height: 300px;
-      }
-
-      .about-badge {
-        width: 110px;
-        height: 110px;
-        bottom: -16px;
-        right: -8px;
-      }
-
-      .about-badge-num {
-        font-size: 2.4rem;
-      }
-    }
-
-    @media (max-width: 768px) {
       .about-visual {
         height: 240px;
       }
@@ -310,12 +486,7 @@
       .about-value {
         padding: 16px;
       }
-    }
 
-    /* ─────────────────────────────────────────
-     SERVICES
-  ───────────────────────────────────────── */
-    @media (max-width: 768px) {
       .services-grid {
         grid-template-columns: 1fr;
       }
@@ -333,17 +504,11 @@
         font-size: 1.4rem;
       }
 
-      /* Always show the link on mobile (no hover state on touch) */
       .service-link {
         opacity: 1;
         transform: none;
       }
-    }
 
-    /* ─────────────────────────────────────────
-     PROJECTS
-  ───────────────────────────────────────── */
-    @media (max-width: 768px) {
       .projects-grid {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -362,7 +527,6 @@
         height: 200px;
       }
 
-      /* Always show overlay on mobile */
       .project-overlay {
         opacity: 1;
         background: linear-gradient(to top, rgba(14, 14, 14, 0.85) 0%, transparent 50%);
@@ -375,12 +539,7 @@
       .project-name {
         font-size: 1.2rem;
       }
-    }
 
-    /* ─────────────────────────────────────────
-     STATS BELT
-  ───────────────────────────────────────── */
-    @media (max-width: 768px) {
       #stats {
         grid-template-columns: 1fr 1fr;
         padding: 0;
@@ -407,16 +566,10 @@
         display: none;
       }
 
-      /* Add right border except last in row */
       .stat-item:nth-child(odd) {
         border-right: 1px solid rgba(14, 14, 14, 0.15);
       }
-    }
 
-    /* ─────────────────────────────────────────
-     TESTIMONIALS
-  ───────────────────────────────────────── */
-    @media (max-width: 768px) {
       .testimonial-card {
         min-width: 300px;
         padding: 28px 24px;
@@ -426,16 +579,10 @@
         font-size: 1rem;
       }
 
-      /* Slow down marquee on mobile for readability */
       .testimonials-inner {
         animation-duration: 38s;
       }
-    }
 
-    /* ─────────────────────────────────────────
-     PROCESS
-  ───────────────────────────────────────── */
-    @media (max-width: 768px) {
       .process-steps {
         grid-template-columns: 1fr;
         gap: 36px;
@@ -460,7 +607,6 @@
         font-size: .85rem;
       }
 
-      /* Vertical connector line */
       .process-steps::before {
         display: none;
       }
@@ -476,12 +622,7 @@
         top: 0;
         margin-bottom: 0;
       }
-    }
 
-    /* ─────────────────────────────────────────
-     CONTACT
-  ───────────────────────────────────────── */
-    @media (max-width: 768px) {
       #contact {
         gap: 48px;
       }
@@ -511,7 +652,6 @@
       .form-group textarea {
         padding: 14px 16px;
         font-size: 16px;
-        /* Prevents iOS zoom on focus */
       }
 
       .form-submit {
@@ -519,11 +659,44 @@
         padding: 18px;
         font-size: .82rem;
       }
+
+      .section-title {
+        font-size: clamp(1.8rem, 7vw, 2.6rem);
+      }
     }
 
-    /* ─────────────────────────────────────────
-     VISITOR COUNTER — improved mobile pill
-  ───────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      #about {
+        gap: 48px;
+      }
+
+      .about-visual {
+        height: 300px;
+      }
+
+      .about-badge {
+        width: 110px;
+        height: 110px;
+        bottom: -16px;
+        right: -8px;
+      }
+
+      .about-badge-num {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-stat-num {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Visitor counter */
     .visitor-counter {
       position: fixed;
       bottom: 16px;
@@ -596,7 +769,6 @@
       }
     }
 
-    /* Digit roller inside the counter pill */
     #vc-roller {
       display: inline-flex;
       align-items: center;
@@ -632,12 +804,6 @@
       color: #C9A84C;
     }
 
-    @media (max-width: 768px) {
-      .vc-cell {
-        color: #C9A84C;
-      }
-    }
-
     .vc-comma-sep {
       font-size: 12px;
       font-weight: 700;
@@ -646,20 +812,6 @@
       margin: 0 1px;
     }
 
-
-
-    /* ─────────────────────────────────────────
-     SECTION TITLES — fluid scaling
-  ───────────────────────────────────────── */
-    @media (max-width: 768px) {
-      .section-title {
-        font-size: clamp(1.8rem, 7vw, 2.6rem);
-      }
-    }
-
-    /* ─────────────────────────────────────────
-     SAFE AREA for devices with notch/home bar
-  ───────────────────────────────────────── */
     @supports (padding-bottom: env(safe-area-inset-bottom)) {
       .visitor-counter {
         bottom: calc(16px + env(safe-area-inset-bottom));
@@ -674,14 +826,11 @@
 </head>
 
 <body>
-  <!-- Cursor -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursor-ring"></div>
-
-  <!-- Scroll Progress -->
   <div id="progress-bar"></div>
 
-  <!-- Nav -->
+  <!-- ═══════════ NAV ═══════════ -->
   <nav id="navbar">
     <a href="#" class="nav-logo">
       <div class="logo-mark">
@@ -694,25 +843,109 @@
         <span class="logo-sub">Constructions</span>
       </div>
     </a>
+
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="process.html">Process</a></li>
+
+      <!-- ── SERVICES DROPDOWN ── -->
+      <li class="nav-item-dropdown" id="nav-services-item">
+        <a href="services.html" id="nav-services-trigger">
+          Services
+          <svg class="nav-chevron" viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </a>
+
+        <div class="nav-dropdown" id="nav-services-dropdown">
+          <a href="residential.html" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="18" rx="1" />
+                <path d="M8 21V8h8v13M2 9h20" />
+              </svg>
+            </span>
+            Residential Construction
+          </a>
+          <a href="commercial.html" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 21h18M6 21V7l6-4 6 4v14M9 21V14h6v7" />
+              </svg>
+            </span>
+            Commercial Projects
+          </a>
+          <a href="industrial.html" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M2 20h20M4 20V8l8-6 8 6v12" />
+                <path d="M10 20v-5h4v5" />
+              </svg>
+            </span>
+            Industrial Infrastructure
+          </a>
+          <a href="curtain.html" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                <polyline points="9,22 9,12 15,12 15,22" />
+              </svg>
+            </span>
+            Interior &amp; Fit-Out
+          </a>
+          <a href="renovation.html" class="nav-dropdown-item">
+            <span class="nav-dropdown-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+            </span>
+            Renovation &amp; Retrofit
+          </a>
+          <!-- <div class="nav-dropdown-divider"></div> -->
+          <!-- <a href="services.html" class="nav-dropdown-footer">
+            View All Services
+            <svg viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a> -->
+        </div>
+      </li>
+      <!-- ── /SERVICES DROPDOWN ── -->
+
+      <!-- <li><a href="projects.html">Projects</a></li> -->
+      <!-- <li><a href="process.html">Process</a></li> -->
       <li><a href="cal.html" class="nav-cta">Calculator</a></li>
       <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
     </ul>
+
     <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
-  <!-- Mobile Menu -->
+  <!-- ═══════════ MOBILE MENU ═══════════ -->
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
     <a href="about.html" class="mobile-link">About</a>
-    <a href="services.html" class="mobile-link">Services</a>
-    <a href="projects.html" class="mobile-link">Projects</a>
-    <a href="process.html" class="mobile-link">Process</a>
+
+    <!-- Services accordion in mobile menu -->
+    <div style="width:100%;display:flex;flex-direction:column;align-items:center;">
+      <button class="mobile-services-toggle" id="mob-services-btn">
+        Services
+        <svg class="mob-chevron" viewBox="0 0 24 24">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      <div class="mobile-services-sub" id="mob-services-sub">
+        <a href="residential.html" class="mobile-link">Residential Construction</a>
+        <a href="commercial.html" class="mobile-link">Commercial Projects</a>
+        <a href="industrial.html" class="mobile-link">Industrial Infrastructure</a>
+        <!-- <a href="management.html" class="mobile-link">Project Management</a> -->
+        <a href="curtain.html" class="mobile-link">Interior &amp; Fit-Out</a>
+        <a href="renovation.html" class="mobile-link">Renovation &amp; Retrofit</a>
+      </div>
+    </div>
+
+    <!-- <a href="projects.html" class="mobile-link">Projects</a> -->
+    <!-- <a href="process.html" class="mobile-link">Process</a> -->
     <a href="cal.html" class="mobile-link">Calculator</a>
     <a href="contact.html" class="mobile-link">Contact</a>
   </div>
@@ -723,21 +956,14 @@
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
     <div class="hero-accent-line"></div>
-
     <div class="hero-content">
       <div class="hero-eyebrow">
         <div class="eyebrow-line"></div>
         <span class="eyebrow-text">Est. 2001 · Patiala, India</span>
       </div>
-      <h1 class="hero-title">
-        We Build<br>
-        <em>Excellence</em>
-        Into Every<br>Structure.
-      </h1>
-      <p class="hero-desc">
-        Bansal Constructions delivers world-class construction and engineering solutions — built on integrity,
-        precision, and decades of craftsmanship.
-      </p>
+      <h1 class="hero-title">We Build<br><em>Excellence</em>Into Every<br>Structure.</h1>
+      <p class="hero-desc">Bansal Constructions delivers world-class construction and engineering solutions —
+        built on integrity, precision, and decades of craftsmanship.</p>
       <div class="hero-actions">
         <a href="projects.html" class="btn-primary">
           <span>Explore Projects</span>
@@ -753,7 +979,6 @@
         </a>
       </div>
     </div>
-
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-num">100+</div>
@@ -768,9 +993,7 @@
         <div class="hero-stat-label">Client Satisfaction</div>
       </div>
     </div>
-
-    <div class="scroll-indicator">
-      <span>Scroll</span>
+    <div class="scroll-indicator"><span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </section>
@@ -779,11 +1002,9 @@
   <section id="about">
     <div class="about-visual reveal-left">
       <div class="about-img-frame">
-        <div class="about-img-icon">
-          <svg viewBox="0 0 100 100">
+        <div class="about-img-icon"><svg viewBox="0 0 100 100">
             <path d="M10 90 L10 30 L50 10 L90 30 L90 90 Z M30 90 L30 60 L70 60 L70 90 M40 40 L60 40 L60 55 L40 55 Z" />
-          </svg>
-        </div>
+          </svg></div>
         <div class="about-gold-line"></div>
         <div class="about-gold-line-v"></div>
       </div>
@@ -792,22 +1013,16 @@
         <div class="about-badge-text">Years of<br>Excellence</div>
       </div>
     </div>
-
     <div class="about-text">
       <div class="section-label reveal">
-        <div class="section-label-line"></div>
-        <span class="section-label-text">Who We Are</span>
+        <div class="section-label-line"></div><span class="section-label-text">Who We Are</span>
       </div>
       <h2 class="section-title reveal">Crafting Skylines,<br>Building Legacies</h2>
-      <p class="reveal reveal-delay-1">
-        Since 2001, Bansal Constructions has been a cornerstone of North India's construction landscape. From
-        residential townships to landmark commercial developments, we bring vision to life through engineering
-        excellence and meticulous attention to detail.
-      </p>
-      <p class="reveal reveal-delay-2">
-        Our team of 100+ skilled professionals operates with a singular commitment: to deliver structures that stand
-        the test of time — in durability, design, and purpose.
-      </p>
+      <p class="reveal reveal-delay-1">Since 2001, Bansal Constructions has been a cornerstone of North India's
+        construction landscape. From residential townships to landmark commercial developments, we bring vision
+        to life through engineering excellence and meticulous attention to detail.</p>
+      <p class="reveal reveal-delay-2">Our team of 100+ skilled professionals operates with a singular commitment:
+        to deliver structures that stand the test of time — in durability, design, and purpose.</p>
       <div class="about-values reveal reveal-delay-3">
         <div class="about-value">
           <div class="about-value-icon">🏗️</div>
@@ -838,17 +1053,14 @@
     <div class="services-header">
       <div>
         <div class="section-label reveal">
-          <div class="section-label-line"></div>
-          <span class="section-label-text">What We Build</span>
+          <div class="section-label-line"></div><span class="section-label-text">What We Build</span>
         </div>
         <h2 class="section-title reveal">Our Core Services</h2>
       </div>
-      <a href="contact.html" class="btn-ghost reveal">
-        All Services
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <a href="contact.html" class="btn-ghost reveal">All Services <svg width="14" height="14" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2">
           <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </a>
+        </svg></a>
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
@@ -858,9 +1070,9 @@
             <path d="M8 21V8h8v13M2 9h20" />
           </svg></div>
         <h3 class="service-title">Residential Construction</h3>
-        <p class="service-desc">Custom homes, villas, and housing complexes designed around your vision and lifestyle —
-          built to last generations.</p>
-        <a href="contact.html" class="service-link">Enquire Now →</a>
+        <p class="service-desc">Custom homes, villas, and housing complexes designed around your vision and
+          lifestyle — built to last generations.</p><a href="contact.html" class="service-link">Enquire Now
+          →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-num">02</div>
@@ -869,9 +1081,8 @@
             <rect x="10" y="9" width="4" height="4" />
           </svg></div>
         <h3 class="service-title">Commercial Projects</h3>
-        <p class="service-desc">Office parks, shopping complexes, and mixed-use developments that drive commerce and
-          define city centres.</p>
-        <a href="contact.html" class="service-link">Enquire Now →</a>
+        <p class="service-desc">Office parks, shopping complexes, and mixed-use developments that drive commerce
+          and define city centres.</p><a href="contact.html" class="service-link">Enquire Now →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-num">03</div>
@@ -880,9 +1091,9 @@
             <path d="M10 20v-5h4v5M4 12h4M16 12h4" />
           </svg></div>
         <h3 class="service-title">Industrial Infrastructure</h3>
-        <p class="service-desc">Factories, warehouses, and industrial facilities built for performance, safety, and
-          long-term operational efficiency.</p>
-        <a href="contact.html" class="service-link">Enquire Now →</a>
+        <p class="service-desc">Factories, warehouses, and industrial facilities built for performance, safety,
+          and long-term operational efficiency.</p><a href="contact.html" class="service-link">Enquire Now
+          →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <div class="service-num">04</div>
@@ -891,9 +1102,8 @@
             <path d="M12 6v6l4 2" />
           </svg></div>
         <h3 class="service-title">Project Management</h3>
-        <p class="service-desc">End-to-end oversight of complex construction projects — from inception and budgeting to
-          delivery and handover.</p>
-        <a href="contact.html" class="service-link">Enquire Now →</a>
+        <p class="service-desc">End-to-end oversight of complex construction projects — from inception and
+          budgeting to delivery and handover.</p><a href="contact.html" class="service-link">Enquire Now →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <div class="service-num">05</div>
@@ -902,9 +1112,8 @@
             <polyline points="9,22 9,12 15,12 15,22" />
           </svg></div>
         <h3 class="service-title">Interior & Fit-Out</h3>
-        <p class="service-desc">Premium interiors crafted by designers who understand that architecture lives in its
-          details.</p>
-        <a href="contact.html" class="service-link">Enquire Now →</a>
+        <p class="service-desc">Premium interiors crafted by designers who understand that architecture lives in
+          its details.</p><a href="contact.html" class="service-link">Enquire Now →</a>
       </div>
       <div class="service-card reveal reveal-delay-3">
         <div class="service-num">06</div>
@@ -913,8 +1122,7 @@
           </svg></div>
         <h3 class="service-title">Renovation & Retrofit</h3>
         <p class="service-desc">Breathing new life into existing structures — structurally sound, aesthetically
-          transformed, value enhanced.</p>
-        <a href="contact.html" class="service-link">Enquire Now →</a>
+          transformed, value enhanced.</p><a href="contact.html" class="service-link">Enquire Now →</a>
       </div>
     </div>
   </section>
@@ -1025,8 +1233,8 @@
       <div class="testimonials-inner">
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Bansal Constructions delivered our dream villa ahead of schedule. The quality of
-            workmanship is simply extraordinary — every corner finished to perfection."</p>
+          <p class="testimonial-text">"Bansal Constructions delivered our dream villa ahead of schedule. The
+            quality of workmanship is simply extraordinary — every corner finished to perfection."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">RS</div>
             <div>
@@ -1037,8 +1245,8 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"We entrusted Bansal with our 50,000 sq.ft. corporate campus and they exceeded
-            every expectation. Professional, transparent, and masterful builders."</p>
+          <p class="testimonial-text">"We entrusted Bansal with our 50,000 sq.ft. corporate campus and they
+            exceeded every expectation. Professional, transparent, and masterful builders."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">PK</div>
             <div>
@@ -1049,8 +1257,8 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"The attention to structural integrity and design elegance in our hotel project
-            was remarkable. Bansal Constructions is truly the gold standard."</p>
+          <p class="testimonial-text">"The attention to structural integrity and design elegance in our hotel
+            project was remarkable. Bansal Constructions is truly the gold standard."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">AM</div>
             <div>
@@ -1061,8 +1269,8 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"From initial design consultation to final handover, the team was exemplary. Our
-            warehouse complex is both functional and beautifully constructed."</p>
+          <p class="testimonial-text">"From initial design consultation to final handover, the team was
+            exemplary. Our warehouse complex is both functional and beautifully constructed."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">SG</div>
             <div>
@@ -1073,8 +1281,8 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Honest timelines, zero hidden costs, and impeccable build quality. Bansal
-            Constructions has earned our trust for all future projects."</p>
+          <p class="testimonial-text">"Honest timelines, zero hidden costs, and impeccable build quality.
+            Bansal Constructions has earned our trust for all future projects."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">VB</div>
             <div>
@@ -1083,11 +1291,10 @@
             </div>
           </div>
         </div>
-        <!-- Duplicate for infinite loop -->
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Bansal Constructions delivered our dream villa ahead of schedule. The quality of
-            workmanship is simply extraordinary — every corner finished to perfection."</p>
+          <p class="testimonial-text">"Bansal Constructions delivered our dream villa ahead of schedule. The
+            quality of workmanship is simply extraordinary — every corner finished to perfection."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">RS</div>
             <div>
@@ -1098,8 +1305,8 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"We entrusted Bansal with our 50,000 sq.ft. corporate campus and they exceeded
-            every expectation. Professional, transparent, and masterful builders."</p>
+          <p class="testimonial-text">"We entrusted Bansal with our 50,000 sq.ft. corporate campus and they
+            exceeded every expectation. Professional, transparent, and masterful builders."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">PK</div>
             <div>
@@ -1110,8 +1317,8 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"The attention to structural integrity and design elegance in our hotel project
-            was remarkable. Bansal Constructions is truly the gold standard."</p>
+          <p class="testimonial-text">"The attention to structural integrity and design elegance in our hotel
+            project was remarkable. Bansal Constructions is truly the gold standard."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">AM</div>
             <div>
@@ -1122,8 +1329,8 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"From initial design consultation to final handover, the team was exemplary. Our
-            warehouse complex is both functional and beautifully constructed."</p>
+          <p class="testimonial-text">"From initial design consultation to final handover, the team was
+            exemplary. Our warehouse complex is both functional and beautifully constructed."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">SG</div>
             <div>
@@ -1134,8 +1341,8 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Honest timelines, zero hidden costs, and impeccable build quality. Bansal
-            Constructions has earned our trust for all future projects."</p>
+          <p class="testimonial-text">"Honest timelines, zero hidden costs, and impeccable build quality.
+            Bansal Constructions has earned our trust for all future projects."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">VB</div>
             <div>
@@ -1160,24 +1367,24 @@
           <div class="process-num">01</div>
         </div>
         <h3 class="process-title">Consultation & Planning</h3>
-        <p class="process-desc">We begin by understanding your vision, budget, and requirements. Our architects and
-          engineers develop a comprehensive project blueprint.</p>
+        <p class="process-desc">We begin by understanding your vision, budget, and requirements. Our architects
+          and engineers develop a comprehensive project blueprint.</p>
       </div>
       <div class="process-step reveal reveal-delay-1">
         <div class="process-num-wrap">
           <div class="process-num">02</div>
         </div>
         <h3 class="process-title">Design & Approval</h3>
-        <p class="process-desc">Detailed architectural drawings and structural plans are crafted, refined, and submitted
-          for all regulatory approvals.</p>
+        <p class="process-desc">Detailed architectural drawings and structural plans are crafted, refined, and
+          submitted for all regulatory approvals.</p>
       </div>
       <div class="process-step reveal reveal-delay-2">
         <div class="process-num-wrap">
           <div class="process-num">03</div>
         </div>
         <h3 class="process-title">Construction</h3>
-        <p class="process-desc">Our skilled workforce executes the build with precision under rigorous quality control,
-          safety protocols, and real-time progress monitoring.</p>
+        <p class="process-desc">Our skilled workforce executes the build with precision under rigorous quality
+          control, safety protocols, and real-time progress monitoring.</p>
       </div>
       <div class="process-step reveal reveal-delay-3">
         <div class="process-num-wrap">
@@ -1229,7 +1436,8 @@
           <div>
             <div class="contact-detail-label">Email</div>
             <div class="contact-detail-value"><a style="text-decoration:none;color:white;"
-                href="mailto:bansalconstructions.official@gmail.com">info@bansalconstructions.in</a></div>
+                href="mailto:bansalconstructions.official@gmail.com">info@bansalconstructions.in</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1237,23 +1445,15 @@
 
     <div class="contact-form reveal-right">
       <div class="form-row">
-        <div class="form-group">
-          <label for="cf-fname">First Name</label>
-          <input id="cf-fname" type="text" placeholder="Rajiv" autocomplete="given-name" />
-        </div>
-        <div class="form-group">
-          <label for="cf-lname">Last Name</label>
-          <input id="cf-lname" type="text" placeholder="Sharma" autocomplete="family-name" />
-        </div>
+        <div class="form-group"><label for="cf-fname">First Name</label><input id="cf-fname" type="text"
+            placeholder="Rajiv" autocomplete="given-name" /></div>
+        <div class="form-group"><label for="cf-lname">Last Name</label><input id="cf-lname" type="text"
+            placeholder="Sharma" autocomplete="family-name" /></div>
       </div>
-      <div class="form-group">
-        <label for="cf-email">Email Address</label>
-        <input id="cf-email" type="email" placeholder="you@example.com" autocomplete="email" />
-      </div>
-      <div class="form-group">
-        <label for="cf-phone">Phone Number</label>
-        <input id="cf-phone" type="tel" placeholder="+91 00000 00000" autocomplete="tel" />
-      </div>
+      <div class="form-group"><label for="cf-email">Email Address</label><input id="cf-email" type="email"
+          placeholder="you@example.com" autocomplete="email" /></div>
+      <div class="form-group"><label for="cf-phone">Phone Number</label><input id="cf-phone" type="tel"
+          placeholder="+91 00000 00000" autocomplete="tel" /></div>
       <div class="form-group">
         <label for="cf-service">Project Type</label>
         <select id="cf-service">
@@ -1266,34 +1466,22 @@
           <option>Project Management</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="cf-message">Tell Us About Your Project</label>
-        <textarea id="cf-message" rows="4" placeholder="Share your vision, timeline, and any specifics..."></textarea>
+      <div class="form-group"><label for="cf-message">Tell Us About Your Project</label><textarea id="cf-message"
+          rows="4" placeholder="Share your vision, timeline, and any specifics..."></textarea></div>
+      <div id="cf-error"
+        style="display:none;background:rgba(224,92,92,0.1);border:1px solid rgba(224,92,92,0.4);color:#e05c5c;padding:12px 16px;font-size:.85rem;margin-bottom:8px;">
       </div>
-
-      <!-- Validation error box -->
-      <div id="cf-error" style="
-    display:none; background:rgba(224,92,92,0.1); border:1px solid rgba(224,92,92,0.4);
-    color:#e05c5c; padding:12px 16px; font-size:.85rem; margin-bottom:8px;
-  "></div>
-
-      <!-- Success message -->
-      <div id="cf-success" style="
-    display:none; background:rgba(74,175,96,0.1); border:1px solid rgba(74,175,96,0.4);
-    color:#4caf60; padding:16px; font-size:.9rem; text-align:center; margin-bottom:8px;
-  ">
-        ✓ Your enquiry has been sent! We'll get back to you within 24 hours.
-      </div>
-
-      <button class="form-submit" id="cf-submit" type="button">
-        <span>Send Enquiry →</span>
-      </button>
+      <div id="cf-success"
+        style="display:none;background:rgba(74,175,96,0.1);border:1px solid rgba(74,175,96,0.4);color:#4caf60;padding:16px;font-size:.9rem;text-align:center;margin-bottom:8px;">
+        ✓ Your enquiry has been sent! We'll get back to you within 24 hours.</div>
+      <button class="form-submit" id="cf-submit" type="button"><span>Send Enquiry →</span></button>
     </div>
   </section>
 
   <!-- Visitor Counter -->
   <div class="visitor-counter" role="status" aria-live="polite" aria-label="Site visitor count">
-    <span style="margin-left:2px;font-weight:400;opacity:.7;font-size:11px;"><b>Visitors</b></span>
+    <span class="vc-live-dot"></span>
+    <span style="font-weight:600;">Visitors</span>
     👀 <span id="vc-roller"></span>
     <span id="visitorCount" style="display:none;">0</span>
   </div>
@@ -1301,121 +1489,104 @@
   <div id="footer-container"></div>
 
   <script>
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      });
+    fetch('footer.html').then(r => r.text()).then(d => { document.getElementById('footer-container').innerHTML = d; });
 
-
+    /* ── Title Manager ── */
     const TitleManager = {
-      // Internal State
-      baseTitle: document.title,
-      currentInterval: null,
-      unreadCount: 0,
-
-      // Core Helper: Safely clears any active animation
-      clearActiveAnimation() {
-        clearInterval(this.currentInterval);
-        this.currentInterval = null;
-        this.updateDisplay();
-      },
-
-      // Core Helper: Refreshes the title with the unread count prefix if applicable
-      updateDisplay(text = this.baseTitle) {
-        const prefix = this.unreadCount > 0 ? `(${this.unreadCount}) ` : '';
-        document.title = prefix + text;
-      },
-
-      // 1. DYNAMIC UNREAD COUNTER
-      setUnreadCount(count) {
-        this.unreadCount = count;
-        this.updateDisplay();
-      },
-
-      clearUnreadCount() {
-        this.unreadCount = 0;
-        this.updateDisplay();
-      },
-
-      // 2. THE MARQUEE SCROLLER
+      baseTitle: document.title, currentInterval: null, unreadCount: 0,
+      clearActiveAnimation() { clearInterval(this.currentInterval); this.currentInterval = null; this.updateDisplay(); },
+      updateDisplay(text = this.baseTitle) { const p = this.unreadCount > 0 ? `(${this.unreadCount}) ` : ''; document.title = p + text; },
+      setUnreadCount(c) { this.unreadCount = c; this.updateDisplay(); },
       startMarquee(speed = 150) {
         this.clearActiveAnimation();
-        let text = this.baseTitle + "   |   "; // Added spacing for smooth looping
-
-        this.currentInterval = setInterval(() => {
-          text = text.substring(1) + text.substring(0, 1);
-          this.updateDisplay(text);
-        }, speed);
+        let text = this.baseTitle + "   |   ";
+        this.currentInterval = setInterval(() => { text = text.substring(1) + text.substring(0, 1); this.updateDisplay(text); }, speed);
       },
-
-      // 3. THE LIVE TYPING EFFECT
-      type(newMessage, speed = 100, holdTime = 3000) {
-        this.clearActiveAnimation();
-        let index = 0;
-        let direction = 1; // 1 = typing forward, -1 = deleting
-        let currentText = "";
-
-        this.currentInterval = setInterval(() => {
-          if (direction === 1) {
-            currentText = newMessage.substring(0, index + 1);
-            this.updateDisplay(currentText);
-            index++;
-
-            // Finished typing
-            if (index === newMessage.length) {
-              direction = 0; // Pause state
-              setTimeout(() => { direction = -1; }, holdTime); // Hold before deleting
-            }
-          } else if (direction === -1) {
-            currentText = newMessage.substring(0, index - 1);
-            this.updateDisplay(currentText);
-            index--;
-
-            // Finished deleting, loop back to main marquee
-            if (index === 0) {
-              this.startMarquee();
-            }
-          }
-        }, speed);
-      },
-
-      // 4. SMART ATTENTION GRABBER (Visibility API)
       initVisibilityCheck() {
         document.addEventListener('visibilitychange', () => {
           if (document.hidden) {
-            // User left: Flash an emergency notice
-            this.clearActiveAnimation();
-            let toggle = false;
-            this.currentInterval = setInterval(() => {
-              document.title = toggle ? "📢 WE MISS YOU!" : "👀 Come Back!";
-              toggle = !toggle;
-            }, 800);
-          } else {
-            // User returned: Go back to normal marquee
-            this.startMarquee();
-          }
+            this.clearActiveAnimation(); let t = false;
+            this.currentInterval = setInterval(() => { document.title = t ? "📢 WE MISS YOU!" : "👀 Come Back!"; t = !t; }, 800);
+          } else { this.startMarquee(); }
         });
       }
     };
-
-    // --- RUN UPON PAGE LOAD ---
-    TitleManager.startMarquee();        // Start rolling the text
-    TitleManager.initVisibilityCheck(); // Listen for tab switches
+    TitleManager.startMarquee();
+    TitleManager.initVisibilityCheck();
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
+
   <script>
+    /* ══════════════════════════════════════════
+       SERVICES DROPDOWN — desktop hover + click
+       ±± mobile accordion toggle
+    ══════════════════════════════════════════ */
+    (function () {
+      const item = document.getElementById('nav-services-item');
+      const trigger = document.getElementById('nav-services-trigger');
+      const dropdown = document.getElementById('nav-services-dropdown');
+
+      /* Desktop: click on the trigger link toggles open class
+         (hover is handled purely in CSS, this adds keyboard/click support) */
+      if (trigger && item) {
+        trigger.addEventListener('click', function (e) {
+          /* If we're on mobile the dropdown isn't shown, let it navigate */
+          if (window.innerWidth <= 768) return;
+          /* On desktop, prevent navigation to services.html and toggle dropdown */
+          e.preventDefault();
+          item.classList.toggle('open');
+        });
+
+        /* Close when clicking anywhere else */
+        document.addEventListener('click', function (e) {
+          if (!item.contains(e.target)) item.classList.remove('open');
+        });
+
+        /* Close on Escape key */
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') item.classList.remove('open');
+        });
+
+        /* Keyboard: open dropdown with Enter/Space on trigger */
+        trigger.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            if (window.innerWidth <= 768) return;
+            e.preventDefault();
+            item.classList.toggle('open');
+          }
+        });
+      }
+
+      /* Mobile accordion */
+      const mobBtn = document.getElementById('mob-services-btn');
+      const mobSub = document.getElementById('mob-services-sub');
+      if (mobBtn && mobSub) {
+        mobBtn.addEventListener('click', function () {
+          const isOpen = mobSub.classList.toggle('open');
+          mobBtn.classList.toggle('open', isOpen);
+        });
+        /* Close sub-menu when a link inside is tapped */
+        mobSub.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => {
+            mobSub.classList.remove('open');
+            mobBtn.classList.remove('open');
+            /* Also close the whole mobile menu */
+            document.getElementById('mobile-menu')?.classList.remove('open');
+            document.getElementById('hamburger')?.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    })();
+
+    /* ── Service Worker ── */
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
-          .then((registration) => {
-            console.log('ServiceWorker registered successfully with scope: ', registration.scope);
-          })
-          .catch((error) => {
-            console.log('ServiceWorker registration failed: ', error);
-          });
+          .then(r => console.log('SW registered:', r.scope))
+          .catch(e => console.log('SW failed:', e));
       });
     }
   </script>
